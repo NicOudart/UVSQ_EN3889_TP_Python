@@ -1,0 +1,14 @@
+site_name: "UVSQ_EN3889_TP_Python"
+site_url: "https://nicoudart.github.io/UVSQ_EN3889_TP_Python"
+site_author: "Nicolas OUDART"
+
+theme:
+  name: readthedocs
+nav:
+  - Introduction: index.md
+  - TP1: TP1.md
+  - TP2: TP2.md
+  - TP3: TP3.md
+  - TP4: TP4.md
+  - TP5: TP5.md
+  - Examen: examen.md
