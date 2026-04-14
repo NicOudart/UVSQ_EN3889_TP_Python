@@ -10,21 +10,21 @@ Lors de ces TP, vous pratiquerez la programmation **orientée objet** avec **Pyt
 
 Nous ajouterons progressivement les concepts vus en cours lors de 5 séances de 3h :
 
-* [TP 1](TP1.md) : De la programmation procédurale vers l'Orienté Objet
+* **TP 1** : De la programmation procédurale vers l'Orienté Objet
 
-* [TP 2](TP2.md) : Les classes, leurs attributs et leurs méthodes
+* **TP 2** : Les classes, leurs attributs et leurs méthodes
 
-* [TP 3](TP3.md) : Héritage et polymorphisme
+* **TP 3** : Héritage et polymorphisme
 
-* [TP 4](TP4.md) : Les méthodes spéciales - partie 1
+* **TP 4** : Les méthodes spéciales - partie 1
 
-* [TP 5](TP5.md) : Les méthodes spéciales - partie 2
+* **TP 5** : Les méthodes spéciales - partie 2
 
 Chaque TP fera l'objet d'une note de séance.
 
 Vous trouverez également des exemples de sujets d'examen des données précédentes :
 
-* [TP examen 2025](examen_2025.md)
+* **TP examen 2025**
 
 Le TP examen durera également 3h, et sera évalué sur le programme, le rendu d'un questionnaires, et vos réponses aux questions de l'enseignant pendant la séance.
 
