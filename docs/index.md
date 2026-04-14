@@ -1,6 +1,6 @@
 # EN3889 : Génie Informatique
 
-![Logo](img/EN3889_logo.png){width="250"}
+![Logo](img/EN3889_logo.png)
 
 _Travaux pratiques conçus pour les étudiants de M1 de l'Université de Versailles Saint-Quentin (UVSQ)_
 
