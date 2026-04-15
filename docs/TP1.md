@@ -1,10 +1,10 @@
-# TP 1 : De la programmation procédurale vers l'Orienté Objet
+# TP 1 : De la programmation procédurale vers l'orienté objet
 
 ![En-tête TP1](img/Header_TP1.png)
 
 _Lors de ce TP, nous allons réviser la programmation procédurale en Python._
 _Vous devrez programmer un automate cellulaire élémentaire, en complétant petit à petit les fonctions d'un programme._
-_En fin de TP, nous réfléchirons à la manière dont ce programme pourrait être transformé en Orienté Objet._
+_En fin de TP, nous réfléchirons à la manière dont ce programme pourrait être transformé en paradigme orienté objet._
 
 ---
 
@@ -60,6 +60,8 @@ _Si nous initialisons l'automate avec 010110100, quelle serait l'état de l'auto
 Lors de ce TP, nous allons programmer un automate cellulaire élémentaire de code de Wolfram donné, pour un nombres d'itérations donné un état initial donné.
 
 Nous allons diviser ce problème complexe en fonctions simples : nous ferons donc ici de la **programmation procédurale**.
+
+**N'oubliez d'importer Numpy et Matplotlib au début de votre programme !**
 
 ## Déterminer les règles de l'automate
 
@@ -179,7 +181,8 @@ def display_automaton(auto_mat):
 
 Faites tourner l'automate n°110 pendant 300 itérations, avec la séquence d'initialisation suivante :
 
-'00000000000000000000000000000000000000000000000000000000111011010010001100000100111010110001011000001110111001100100100011001011001'
+'000000000000000000000000000000000000000000000000000000001110110100
+10001100000100111010110001011000001110111001100100100011001011001'
 
 Si vous affichez la matrice 2D obtenue sous la forme d'une image, vous devriez obtenir :
 
@@ -190,11 +193,61 @@ Pour cette raison, il est souvent considéré comme le plus intéressant des aut
 
 Mais vous pouvez essayer d'autres règles ! Par exemple, les règles 30 et 90 donnent aussi des motifs amusants. 
 
-## Vers l'Orienté Objet
+## Vers l'orienté objet
 
 Lors de ce TP, nous avons programmé les automates cellulaires élémentaires en paradigme **procédural**, afin de vous faire réviser les bases de la programmation avec Python.
 Cependant, programmer en paradigme **orienté objet** aurait ici été très pertinent.
 
-En effet, 
+En effet, on peut voir un automate cellulaire élémentaire comme une classe d'automate, contenant des règles et une matrice 1D à laquelle peuvent s'appliquer des méthodes qui vont en changer les valeurs.
 
-Lors les TP suivants, nous programmerons des automates cellulaires en pradigme **orienté objet**.
+_Avez-vous une idée des attributs et méthodes nécessaires à un automate cellulaire élémentaire ?_ 
+
+Transformons notre programme en orienté objet.
+Ouvrez un nouveau fichier Python, qui contiendra la classe `cellular_automaton` suivante :
+
+~~~
+class cellular_automaton:
+
+	def __init__(self,init_sequence,rule_number):
+	
+		self.set_rules(rule_number)
+		self.set_grid(init_sequence)
+		self.iteration = 0
+		
+	def set_rules(self,rule_number):
+		
+		#Complétez ici
+		
+	def get_rules(self):
+		
+		#Complétez ici
+		
+	def set_grid(self):
+	
+		#Complétez ici
+	
+	def get_grid(self):
+	
+		#Complétez ici
+		
+	def update(self);
+	
+		#Complétez ici
+		
+	def iterate(self,nb_iterations):
+		
+		#Complétez ici
+		
+	def display(self):
+	
+		#Complétez ici
+~~~
+
+Complétez la classe `cellular_automaton` en vous basant sur les fonctions que vous avez codées précédemment.
+
+Créez une instance de votre automate pour la règle n°110, et faites un affichage du résultat de 300 itérations, pour la même séquence d'initialisation que précédemment.
+Vérifiez que vous obtenez bien le même résultat.
+
+---
+Bravo ! Vous avez écrit votre 1er programme en **orienté objet** !
+Lors les TP suivants, nous programmerons des automates cellulaires plus complexes, directement dans ce paradigme.
