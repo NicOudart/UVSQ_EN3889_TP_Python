@@ -43,7 +43,7 @@ On parlera aussi de "règle n°110".
 
 Voici l'évolution de l'automate cellulaire n°110 pour une itération :
 
-![Exemple pour la règle 110](img/.png)
+![Exemple pour la règle 110](img/TP1_iteration.gif)
 
 Il est bien entendu impossible de simuler l'évoluation d'une matrice 1D infinie avec un ordinateur.
 On définira donc une matrice 1D de dimensions finies, et on pourra choisir de gèrer les cas sur les bords de différentes façons :
