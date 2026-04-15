@@ -81,8 +81,8 @@ Cette chaîne de caractère contiendra toujours 8 caractères.
 
 |Aide|
 |:-|
-|Pour convertir un nombre décimal en binaire, il suffit d'appliquer des divisions entières par 2 à ce nombre, jusqu'à ce que le quotient devienne nul.|
-|La juxtaposition des restes est la conversion en binaire du nombre.|
+|Pour convertir un nombre décimal en binaire, il suffit d'appliquer des divisions entières par 2 à ce nombre, jusqu'à ce que le quotient devienne nul. La juxtaposition des restes est la conversion en binaire du nombre.|
+|En Python, l'opérateur de la division entière est `//`, celui du reste de la division entière est `%`.|
 
 Complétez ensuite la fonction `bin_to_rule` suivante :
 
@@ -104,6 +104,8 @@ Nous nous servirons du dictionnaire de règles généré par la fonction `bin_to
 
 Nous allons à présent programmer une fonction pour définir l'état initial d'un automate cellulaire.
 
+Complétez la fonction `init_automaton` suivante :
+
 ~~~
 def init_automaton(init_sequence):
     
@@ -112,7 +114,15 @@ def init_automaton(init_sequence):
     return auto_vect
 ~~~
 
+Elle prendra en entrée une chaîne de caractères `init_sequence`, ne contenant que des '0' ou des '1'.
+Elle retournera en sortie une matrice Numpy 1D contenant la même séquence de 0 et de 1, sous la forme d'entiers.
+
 ## Mettre à jour l'automate
+
+Nous pouvons à présent déterminer les règles d'un automate, et l'initialiser.
+Il nous faut maintenant une fonction pour le mettre à jour à chaque itération, en se basant sur les règles déterminées.
+
+Complétez la fonction `update_automaton` suivante :
 
 ~~~
 def update_automaton(auto_vect,rule_dict):
@@ -122,7 +132,21 @@ def update_automaton(auto_vect,rule_dict):
     return auto_vect
 ~~~
 
+Elle prendra en entrée une matrice Numpy 1D `auto_vect` contenant l'état de l'automate à une itération donnée, et `rule_dict` un dictionnaire tel que renvoyé par la fonction `bin_to_rule`.
+Elle retournera en sortie une matrice Numpy 1D `auto_vect`, contenant l'état de l'automate à l'itération suivante, déterminé à partir des règles de l'automate.
+
+|Aide|
+|:-|
+|Pour réaliser une copie indépendante d'une matrice Numpy, il faut utiliser la méthode `copy` de Numpy.|
+|Pour convertir une valeur en entier ou en chaîne de caractère, on peut utiliser les méthodes natives de Python `int` et `str`.|
+
 ## Itération de l'automate
+
+Ça y est, nous avons à présent toutes les fonctions dont nous avons besoin pour faire tourner un automate cellulaire élémentaire.
+
+Nous allons définir une fonction appellant les fonction programmées précédemment, pour itérer un automate cellulaire donné, un nombre de fois donné, pour une initialisation donnée.
+
+Complétez la fonction `iterate_automaton` suivante :
 
 ~~~
 def iterate_automaton(init_sequence,rule_number,nb_iterations):
@@ -131,6 +155,9 @@ def iterate_automaton(init_sequence,rule_number,nb_iterations):
         
     return auto_mat
 ~~~
+
+Elle prendra en entrée une chaîne de caractères `init_sequence` contenant la séquence de '0' et de '1' pour initialiser l'automate, un entier `rule_number` correspondant au numéro de règles (code de Wolfram) de l'automate, et un entier `nb_iterations` correspondant au nombre d'itérations pour lequel faire tourner l'automate.
+Elle retournera en sortie une matrice Numpy 2D concaténant verticalement les états de l'automate au fil des itérations.
 
 ## Affichage de la simulation
 
