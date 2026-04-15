@@ -55,9 +55,17 @@ On définira donc une matrice 1D de dimensions finies, et on pourra choisir de g
 * Faire comme si la case à gauche du bord gauche était la case du bord droit, et la case à droite du bord droit était la case du bord gauche.
 
 _Vérifions si vous avez tout compris : quelles sont les règles de l'automate n°90 ?_
-_Si nous initialisons l'automate avec une matrice 1D 010110100, quelle serait l'état de l'automate à l'itération suivante (en ne faisant pas varier les bords) ?_
+_Si nous initialisons l'automate avec 010110100, quelle serait l'état de l'automate à l'itération suivante (en ne faisant pas varier les bords) ?_
+
+Lors de ce TP, nous allons programmer un automate cellulaire élémentaire de code de Wolfram donné, pour un nombres d'itérations donné un état initial donné.
+
+Nous allons diviser ce problème complexe en fonctions simples : nous ferons donc ici de la **programmation procédurale**.
 
 ## Déterminer les règles de l'automate
+
+Pour commencer, il nous faut des fonctions pour convertir le numéro d'un automate cellulaire en ses 8 règles.
+
+Complétez la fonction `nb_to_bin` suivante :
 
 ~~~
 def nb_to_bin(rule_number):
@@ -67,6 +75,17 @@ def nb_to_bin(rule_number):
     return wolfram_code
 ~~~
 
+Elle prendra en entrée un entier `rule_number` correspondant au numéro de la règle de l'automate.
+Elle retournera en sortie une chaîne de caractères `wolfram_code`, contenant la conversion en binaire de l'entier `rule_number`.
+Cette chaîne de caractère contiendra toujours 8 caractères.
+
+|Aide|
+|:-|
+|Pour convertir un nombre décimal en binaire, il suffit d'appliquer des divisions entières par 2 à ce nombre, jusqu'à ce que le quotient devienne nul.|
+|La juxtaposition des restes est la conversion en binaire du nombre.|
+
+Complétez ensuite la fonction `bin_to_rule` suivante :
+
 ~~~
 def bin_to_rule(wolfram_code):
 
@@ -75,7 +94,15 @@ def bin_to_rule(wolfram_code):
     return rule_dict
 ~~~
 
+Elle prendra en entrée une chaîne de 8 caractères `wolfram_code`, telle que renvoyée par la fonction `nb_to_bin`.
+Elle retournera en sortie un dictionnaire contenant les clés '111', '110', '101', '100', '011', '010', '001' et '000', correspondant aux configurations possibles pour chaque élément de l'automate.
+Chaque clé contiendra '0' ou '1' suivant les règles de l'automate.
+
+Nous nous servirons du dictionnaire de règles généré par la fonction `bin_to_rule` afin de déterminer les changements des valeurs d'un automate d'une itération à une autre.
+
 ## Initialiser l'automate
+
+Nous allons à présent programmer une fonction pour définir l'état initial d'un automate cellulaire.
 
 ~~~
 def init_automaton(init_sequence):
