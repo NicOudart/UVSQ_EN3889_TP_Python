@@ -243,11 +243,11 @@ class cellular_automaton:
 		#Complétez ici
 ~~~
 
-Complétez la classe `cellular_automaton` en vous basant sur les fonctions que vous avez codées précédemment.
+Essayez de compléter la classe `cellular_automaton` en vous basant sur les fonctions que vous avez codées précédemment.
 
 Créez une instance de votre automate pour la règle n°110, et faites un affichage du résultat de 300 itérations, pour la même séquence d'initialisation que précédemment.
 Vérifiez que vous obtenez bien le même résultat.
 
 ---
 Bravo ! Vous avez écrit votre 1er programme en **orienté objet** !
-Lors les TP suivants, nous programmerons des automates cellulaires plus complexes, directement dans ce paradigme.
+Lors des TP suivants, nous programmerons des automates cellulaires plus complexes, directement dans ce paradigme.
