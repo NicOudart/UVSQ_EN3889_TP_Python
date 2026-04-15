@@ -84,6 +84,8 @@ Cette chaîne de caractère contiendra toujours 8 caractères.
 |Pour convertir un nombre décimal en binaire, il suffit d'appliquer des divisions entières par 2 à ce nombre, jusqu'à ce que le quotient devienne nul. La juxtaposition des restes est la conversion en binaire du nombre.|
 |En Python, l'opérateur de la division entière est `//`, celui du reste de la division entière est `%`.|
 
+_Proposez une ligne de commande Python pour tester votre fonction sur un exemple. Obtenez-vous bien le résulat attendu ?_
+
 Complétez ensuite la fonction `bin_to_rule` suivante :
 
 ~~~
@@ -140,6 +142,8 @@ Elle retournera en sortie une matrice Numpy 1D `auto_vect`, contenant l'état de
 |Pour réaliser une copie indépendante d'une matrice Numpy, il faut utiliser la méthode `copy` de Numpy.|
 |Pour convertir une valeur en entier ou en chaîne de caractère, on peut utiliser les méthodes natives de Python `int` et `str`.|
 
+_Proposez une ligne de commande Python pour tester votre fonction sur un exemple d'automate. Obtenez-vous bien le résulat attendu ?_
+
 ## Itération de l'automate
 
 Ça y est, nous avons à présent toutes les fonctions dont nous avons besoin pour faire tourner un automate cellulaire élémentaire.
@@ -161,19 +165,36 @@ Elle retournera en sortie une matrice Numpy 2D concaténant verticalement les é
 
 ## Affichage de la simulation
 
+Votre automate cellulaire est prêt à tourner !
+
+Nous allons le tester en affichant la matrice Numpy 2D obtenue en sortie de `iterate_automaton` sous la forme d'une image en noir et blanc : un pixel blanc correspond à un 0, un pixel noir correspond à un 1.
+
+Voici une fonction `display_automaton`, qui vous permettra de réaliser un tel affichage à partir d'une matrice Numpy 2D `auto_mat`.
+
 ~~~
 def display_automaton(auto_mat):
     
     plt.imshow(auto_mat,cmap='binary')
-    
-rule = 110
-
-init_sequence = '00000000000000000000000000000000000000000000000000000000111011010010001100000100111010110001011000001110111001100100100011001011001'
-
-#Complétez ici
 ~~~
+
+Faites tourner l'automate n°110 pendant 300 itérations, avec la séquence d'initialisation suivante :
+
+'00000000000000000000000000000000000000000000000000000000111011010010001100000100111010110001011000001110111001100100100011001011001'
+
+Si vous affichez la matrice 2D obtenue sous la forme d'une image, vous devriez obtenir :
 
 ![Simulation TP1](img/TP1_example.png)
 
+L'automate cellulaire élémentaire de règle n°110 est connu pour son comportement complexe, ni complètement chaotique, ni complètement ordonné, où des motifs semblent se déplacer et s'entrechoquer.
+Pour cette raison, il est souvent considéré comme le plus intéressant des automates cellulaires.
+
+Mais vous pouvez essayer d'autres règles ! Par exemple, les règles 30 et 90 donnent aussi des motifs amusants. 
+
 ## Vers l'Orienté Objet
 
+Lors de ce TP, nous avons programmé les automates cellulaires élémentaires en paradigme **procédural**, afin de vous faire réviser les bases de la programmation avec Python.
+Cependant, programmer en paradigme **orienté objet** aurait ici été très pertinent.
+
+En effet, 
+
+Lors les TP suivants, nous programmerons des automates cellulaires en pradigme **orienté objet**.
