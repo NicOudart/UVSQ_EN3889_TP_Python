@@ -37,7 +37,7 @@ Pour chaque itération :
 
 * Si une case est à 1, et est entourée de 2 ou 3 voisins à 1, alors elle reste à 1. Sinon, elle passe à 0.
 
-![Règles du jeu de la vie](img/.gif)
+![Règles du jeu de la vie](img/TP2_iteration.gif)
 
 Ces règles font apparaitre des motifs se déplaçant plus ou moins vite sur la grille, intéragissant les uns avec les autres, ce qui leur donne l'apparence d'organismes vivant.
 
@@ -54,7 +54,7 @@ B et S sont des séries de numéros entre 0 et 8 correspondant respectivement au
 
 On en déduit que le "Jeu de la Vie" peut être définit au format B/S par : **3/23**.
 
-Lors de ce TP, nous allons programmer un automate cellulaire de type "life-like", sous la forme d'une classe Python avec des attributs et des méthodes qu'il nous faudra définir.
+Lors de ce TP, nous allons programmer un automate cellulaire de type "life-like", sous la forme d'une **classe** Python avec des attributs et des méthodes qu'il nous faudra définir.
 
 **N'oubliez d'importer Numpy et Matplotlib au début de votre programme !**
 
