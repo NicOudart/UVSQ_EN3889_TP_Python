@@ -111,12 +111,15 @@ class life_like:
         #Complétez ici
         
     def display_grid(self):
-	
-        #Complétez ici
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.show()
         
     def save_grid(self):
-	
-        #Complétez ici
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.savefig('automaton_'+str(self.iteration)+'.png')
+        plt.close()
 ~~~
 
 Vous devrez compléter petit à petit les méthodes de cette classe.
@@ -141,11 +144,63 @@ Il initialisera 3 attributs d'instance de la manière suivante :
 
 ## Définir les getters
 
+~~~
+def get_rules(self):
+        
+		#Complétez ici
+~~~
+
+~~~
+def get_grid(self):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def get_grid_size(self):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def get_neighbors(self):
+        
+		#Complétez ici
+~~~
+
+~~~ 
+    def get_iteration(self):
+        
+		#Complétez ici
+~~~
+
 ## Définir les setters
+
+~~~
+    def set_rules(self,rules_code):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def set_random_grid(self,grid_size_x,grid_size_y):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def set_grid(self,grid):
+        
+		#Complétez ici
+~~~
 
 ## Méthode pour itérer l'automate
 
-## Méthode pour l'affichage
+~~~
+    def iterate_grid(self,nb_iterations):
+	
+        #Complétez ici
+~~~
 
 ## Instanciation et simulation
 
