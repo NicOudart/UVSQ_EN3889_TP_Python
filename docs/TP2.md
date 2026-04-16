@@ -142,6 +142,10 @@ Il initialisera 3 attributs d'instance de la manière suivante :
 
 * `iteration` directement initialisé à 0, et qui nous servira à suivre le nombre d'itération pour lequel a tourné l'automate.
 
+Pour rappel, le constructeur est la méthode appelée à la création d'une instance d'une classe.
+
+_Quelle ligne de commande Pythn utiliseriez-vous pour créer un automate cellulaire "Jeu de la Vie" de Conway, avec une grille 100x100 ?_ 
+
 ## Définir les getters
 
 ~~~
