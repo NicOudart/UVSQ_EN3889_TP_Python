@@ -12,19 +12,21 @@ _En fin de TP, nous réfléchirons à comment nous pourrions améliorer notre pr
 Lors du TP précédent, nous avons vu des automates cellulaires 1D : chaque valeur d'une matrice 1D ne contenant que des 0 et des 1 évolue au fil des itérations, suivant des règles sur son voisinage.
 Ce concept peut être étendu à une matrice 2D, et nous obtenons alors un **automate cellulaire 2D** :
 
-![Automate cellulaire 2D](img/.png)
+![Automate cellulaire 2D](img/TP2_cellular_automaton.png)
 
 Dans le cas d'un automate 1D, on définit le "voisinage" d'une case comme étant les cases directement à sa droite ou à sa gauche.
 Pour un automate 2D, il nous faut une nouvelle définition de "voisinage".
 La plus commune est le **voisinage de Moore** : les 8 cases entourant une case donnée.
 
-![Voisinage de Moore](img/.png)
+![Voisinage de Moore](img/TP2_Moore_neighborhood.png)
 
 Les règles d'un automate cellulaire 2D se basent en général sur 2 choses :
 
 * La valeur de la case, 0 ou 1.
 
 * Le nombre de ses 8 voisins égaux à 0 ou 1.
+
+Les cas sur les bords pourront être gérés d'une manière similaire aux automates 1D.
 
 En 1970, le mathématicien anglais John Horton Conway a découvert que pour des règles aussi simples émergent parfois des comportements complexes, donnant l'impression de voir des organismes vivant évoluer sur la grille de l'automate.
 
@@ -47,6 +49,7 @@ Mais c'est loin d'être le seul à faire émerger des comportements complexes.
 On qualifiera de **"life-like"** tout automate cellulaire 2D donnant l'impression de voir des organismes vivant naître, évoluer et mourir.
 
 Afin de définir les règles d'un automate cellulaire "life-like" de manière standardisée, on utilise souvent la notation **B/S**.
+
 B et S sont des séries de numéros entre 0 et 8 correspondant respectivement aux nombres de voisins "vivants" (à 1) pour qu'une case "naisse" (passe de 0 à 1), et au nombre de voisins "vivants" (à 1) pour qu'une case puisse survivre (rester à 1).
 
 On en déduit que le "Jeu de la Vie" peut être définit au format B/S par : **3/23**.
@@ -112,3 +115,5 @@ class life_like:
 ## Affichage de la simulation
 
 ![Simulation TP2](img/TP2_example.gif)
+
+## Vers la notion d'héritage
