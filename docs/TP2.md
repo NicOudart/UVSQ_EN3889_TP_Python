@@ -145,13 +145,13 @@ Il initialisera 3 attributs d'instance de la manière suivante :
 ## Définir les getters
 
 ~~~
-def get_rules(self):
+	def get_rules(self):
         
 		#Complétez ici
 ~~~
 
 ~~~
-def get_grid(self):
+	def get_grid(self):
         
 		#Complétez ici
 ~~~
