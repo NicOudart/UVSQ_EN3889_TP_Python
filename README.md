@@ -8,21 +8,26 @@ _Travaux pratiques conçus pour les étudiants de M1 de l'Université de Versail
 
 Lors de ces TP, vous pratiquerez la programmation **orientée objet** avec **Python**, sur des exemples ludiques : les **automates cellulaires**.
 
-Nous ajouterons progressivement les concepts vus en cours lors de 5 séances de 3h :
+Vous trouverez d'abord sur ce site un TP de préparation à faire chez vous en autonomie :
 
-* **TP 1** : De la programmation procédurale vers l'Orienté Objet
+* **Préparation** : De la programmation procédurale vers l'Orienté Objet
 
-* **TP 2** : Les classes, leurs attributs et leurs méthodes
+Vous trouverez ensuite les 3 TP que nous ferons ensemble lors des séances dédiées.
+Nous introduirons progressivement les concepts vus en cours lors de 3 séances de 3h :
 
-* **TP 3** : Héritage et polymorphisme
+* **TP1** : Les classes, leurs attributs et leurs méthodes
 
-* **TP 4** : Les méthodes spéciales - partie 1
+* **TP2** : Héritage et polymorphisme
 
-* **TP 5** : Les méthodes spéciales - partie 2
+* **TP3** : Les méthodes spéciales
 
 Chaque TP fera l'objet d'une note de séance.
 
-Vous trouverez également des exemples de sujets d'examen des données précédentes :
+Si vous avez terminé les 3 TP avant la fin des séances, vous trouverez également un TP bonus :
+
+* **Bonus** : D'autres méthodes spéciales
+
+Enfin, vous trouverez des exemples de sujets d'examen des données précédentes pour vous entrainer chez vous :
 
 * **TP examen 2025**
 

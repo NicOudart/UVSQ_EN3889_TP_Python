@@ -6,9 +6,9 @@ theme:
   name: readthedocs
 nav:
   - Introduction: index.md
+  - Préparation: Preparation.md
   - TP1: TP1.md
   - TP2: TP2.md
   - TP3: TP3.md
-  - TP4: TP4.md
-  - TP5: TP5.md
+  - Bonus: Bonus.md
   - Examen 2025: examen_2025.md

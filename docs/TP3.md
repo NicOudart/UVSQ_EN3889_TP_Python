@@ -1,10 +1,10 @@
-# TP 3 : Héritage et polymorphisme
+# TP 3 : Les méthodes spéciales
 
 ![En-tête TP3](img/Header_TP3.png)
 
 ---
 
-## Les Turmites
+## Wire-world - partie 1
 
 ## Affichage de la simulation
 

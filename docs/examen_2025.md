@@ -8,4 +8,4 @@
 
 ## Affichage de la simulation
 
-![Simulation TP examen](img/TPexam_example.gif)
+![Simulation TP examen](img/TP_exam_example.gif)

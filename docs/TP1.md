@@ -1,253 +1,213 @@
-# TP 1 : De la programmation procédurale vers l'orienté objet
+# TP 1 : Les classes, leurs attributs et leurs méthodes
 
 ![En-tête TP1](img/Header_TP1.png)
 
-_Lors de ce TP, nous allons réviser la programmation procédurale en Python._
-_Vous devrez programmer un automate cellulaire élémentaire, en complétant petit à petit les fonctions d'un programme._
-_En fin de TP, nous réfléchirons à la manière dont ce programme pourrait être transformé en paradigme orienté objet._
+_Lors de ce TP, nous allons programmer un automate cellulaire 2D de type "life-like", en complétant petit à petit les attributs et méthodes d'une classe._
+_En fin de TP, nous réfléchirons à comment nous pourrions améliorer notre programme pour rendre certaines parties réutilisables par d'autres types d'automates cellulaires._
 
 ---
 
-## Les automates cellulaires élémentaires
+## Le Jeu de la Vie
 
-On appelle **automate cellulaire élémentaire** un algorithme itératif qui va initialiser une matrice 1D infinie, dont les éléments ne peuvent prendre que les valeurs 0 ou 1 :
+Lors du TP précédent, nous avons vu des automates cellulaires 1D : chaque valeur d'une matrice 1D ne contenant que des 0 et des 1 évolue au fil des itérations, suivant des règles sur son voisinage.
+Ce concept peut être étendu à une matrice 2D, et nous obtenons alors un **automate cellulaire 2D** :
 
-![Automate cellulaire élémentaire](img/TP1_cellular_automaton.png)
+![Automate cellulaire 2D](img/TP1_cellular_automaton.png)
 
-A chaque itération, chaque élément de la matrice change ou non de valeur, suivant une série de règles sur :
+Dans le cas d'un automate 1D, on définit le "voisinage" d'une case comme étant les cases directement à sa droite ou à sa gauche.
+Pour un automate 2D, il nous faut une nouvelle définition de "voisinage".
+La plus commune est le **voisinage de Moore** : les 8 cases entourant une case donnée.
 
-* La valeur de l'élément à sa gauche.
+![Voisinage de Moore](img/TP1_Moore_neighborhood.png)
 
-* La valeur de l'élément à sa droite.
+Les règles d'un automate cellulaire 2D se basent en général sur 2 choses :
 
-* La valeur de l'élément lui-même.
+* La valeur de la case, 0 ou 1.
 
-Pour chaque élément, il n'y a donc que **8 configurations possibles** :
+* Le nombre de ses 8 voisins égaux à 0 ou 1.
 
-![Les 8 configurations](img/TP1_configurations.png)
+Les cas sur les bords pourront être gérés d'une manière similaire aux automates 1D.
 
-Il suffit donc de définir la valeur que prendra l'élément dans ces 8 situations pour obtenir les **règles** d'un automate cellulaire élémentaire.
+En 1970, le mathématicien anglais John Horton Conway a découvert que pour des règles aussi simples émergent parfois des comportements complexes, donnant l'impression de voir des organismes vivant évoluer sur la grille de l'automate.
 
-On en déduit qu'il n'existe que **256 jeux de règles possibles**, soit autant d'automates cellulaires élémentaires différents.
+Un jeu de règles en particulier est devenu célèbre : le **"Jeu de la Vie"**.
+Pour chaque itération :
 
-En 1983, le mathématicien anglais Stephen Wolfram a proposé une manière d'identifier ces 256 automates, avec un numéro.
+* Si une case est à 0, et est entourée de 3 voisins à 1, alors elle passe à 1. Sinon, elle reste à 0.
 
-Si nous définissons la valeur que prend un élément d'un automate dans les 8 configurations possibles, dans cet ordre :
+* Si une case est à 1, et est entourée de 2 ou 3 voisins à 1, alors elle reste à 1. Sinon, elle passe à 0.
 
-![Code de Wolfram](img/TP1_Wolfram_code.png)
+![Règles du jeu de la vie](img/TP1_iteration.gif)
 
-On obtient la série de nombres binaires 01101110, qui correspond en décimal à 110.
+Ces règles font apparaitre des motifs se déplaçant plus ou moins vite sur la grille, intéragissant les uns avec les autres, ce qui leur donne l'apparence d'organismes vivant.
 
-Ce numéro, que l'on nomme **code de Wolfram**, sera l'identifiant de cet automate. 
-On parlera aussi de "règle n°110".
+On fait d'ailleurs souvent l'analogie avec le vivant, en disant d'une case à 0 qu'elle est "morte", et d'une case à 1 qu'elle est "vivante".
 
-Voici l'évolution de l'automate cellulaire n°110 pour une itération :
+Le "Jeu de la Vie" est probablement le plus connu de tous les automates cellulaires 2D.
+Mais c'est loin d'être le seul à faire émerger des comportements complexes.
 
-![Exemple pour la règle 110](img/TP1_iteration.gif)
+On qualifiera de **"life-like"** tout automate cellulaire 2D donnant l'impression de voir des organismes vivant naître, évoluer et mourir.
 
-Il est bien entendu impossible de simuler l'évoluation d'une matrice 1D infinie avec un ordinateur.
-On définira donc une matrice 1D de dimensions finies, et on pourra choisir de gèrer les cas sur les bords de différentes façons :
+Afin de définir les règles d'un automate cellulaire "life-like" de manière standardisée, on utilise souvent la notation **B/S**.
 
-* Ne jamais faire varier les cases sur les bords.
+B et S sont des séries de numéros entre 0 et 8 correspondant respectivement aux nombres de voisins "vivants" (à 1) pour qu'une case "naisse" (passe de 0 à 1), et au nombre de voisins "vivants" (à 1) pour qu'une case puisse survivre (rester à 1).
 
-* Faire comme si une case imaginaire à gauche du bord gauche était à 0 et une case imaginaire à droite du bord droit était à 0.
+On en déduit que le "Jeu de la Vie" peut être définit au format B/S par : **3/23**.
 
-* Faire comme si la case à gauche du bord gauche était la case du bord droit, et la case à droite du bord droit était la case du bord gauche.
+_Vérifions si vous avez bien compris. L'automate cellulaire "diamoeba" est définit par 35678/5678. Quelles sont donc ses règles ?_
 
-_Vérifions si vous avez tout compris : quelles sont les règles de l'automate n°90 ?_
-_Si nous initialisons l'automate avec 010110100, quelle serait l'état de l'automate à l'itération suivante (en ne faisant pas varier les bords) ?_
-
-Lors de ce TP, nous allons programmer un automate cellulaire élémentaire de code de Wolfram donné, pour un nombres d'itérations donné un état initial donné.
-
-Nous allons diviser ce problème complexe en fonctions simples : nous ferons donc ici de la **programmation procédurale**.
+Lors de ce TP, nous allons programmer un automate cellulaire de type "life-like", sous la forme d'une **classe** Python avec des attributs et des méthodes qu'il nous faudra définir.
 
 **N'oubliez pas d'importer Numpy et Matplotlib au début de votre programme !**
 
-## Déterminer les règles de l'automate
+## Définition de classe et constructeur
 
-Pour commencer, il nous faut des fonctions pour convertir le numéro d'un automate cellulaire en ses 8 règles.
+Pour définir un automate cellulaire "life-like" dans Python, nous allons créer une classe "life-like", qui définira les attributs et méthodes nécessaires à tous les automates cellulaires.
+Il suffira ensuite de créer une instance de cette classe pour pouvoir simuler un automate cellulaire "life-like" en particulier.
 
-Complétez la fonction `nb_to_bin` suivante :
+Voici la structure de la classe que nous allons programmer :
 
 ~~~
-def nb_to_bin(rule_number):
-
-	#Complétez ici
+class life_like:
     
-    return wolfram_code
-~~~
-
-Elle prendra en entrée un entier `rule_number` correspondant au numéro de la règle de l'automate.
-Elle retournera en sortie une chaîne de caractères `wolfram_code`, contenant la conversion en binaire de l'entier `rule_number`.
-Cette chaîne de caractère contiendra toujours 8 caractères.
-
-|Aide|
-|:-|
-|Pour convertir un nombre décimal en binaire, il suffit d'appliquer des divisions entières par 2 à ce nombre, jusqu'à ce que le quotient devienne nul. La juxtaposition des restes est la conversion en binaire du nombre.|
-|En Python, l'opérateur de la division entière est `//`, celui du reste de la division entière est `%`.|
-
-_Proposez une ligne de commande Python pour tester votre fonction sur un exemple. Obtenez-vous bien le résulat attendu ?_
-
-Complétez ensuite la fonction `bin_to_rule` suivante :
-
-~~~
-def bin_to_rule(wolfram_code):
-
-	#Complétez ici
-    
-    return rule_dict
-~~~
-
-Elle prendra en entrée une chaîne de 8 caractères `wolfram_code`, telle que renvoyée par la fonction `nb_to_bin`.
-Elle retournera en sortie un dictionnaire contenant les clés '111', '110', '101', '100', '011', '010', '001' et '000', correspondant aux configurations possibles pour chaque élément de l'automate.
-Chaque clé contiendra '0' ou '1' suivant les règles de l'automate.
-
-Nous nous servirons du dictionnaire de règles généré par la fonction `bin_to_rule` afin de déterminer les changements des valeurs d'un automate d'une itération à une autre.
-
-## Initialiser l'automate
-
-Nous allons à présent programmer une fonction pour définir l'état initial d'un automate cellulaire.
-
-Complétez la fonction `init_automaton` suivante :
-
-~~~
-def init_automaton(init_sequence):
-    
-    #Complétez ici
-    
-    return auto_vect
-~~~
-
-Elle prendra en entrée une chaîne de caractères `init_sequence`, ne contenant que des '0' ou des '1'.
-Elle retournera en sortie une matrice Numpy 1D contenant la même séquence de 0 et de 1, sous la forme d'entiers.
-
-## Mettre à jour l'automate
-
-Nous pouvons à présent déterminer les règles d'un automate, et l'initialiser.
-Il nous faut maintenant une fonction pour le mettre à jour à chaque itération, en se basant sur les règles déterminées.
-
-Complétez la fonction `update_automaton` suivante :
-
-~~~
-def update_automaton(auto_vect,rule_dict):
-    
-    #Complétez ici
-    
-    return auto_vect
-~~~
-
-Elle prendra en entrée une matrice Numpy 1D `auto_vect` contenant l'état de l'automate à une itération donnée, et `rule_dict` un dictionnaire tel que renvoyé par la fonction `bin_to_rule`.
-Elle retournera en sortie une matrice Numpy 1D `auto_vect`, contenant l'état de l'automate à l'itération suivante, déterminé à partir des règles de l'automate.
-
-|Aide|
-|:-|
-|Pour réaliser une copie indépendante d'une matrice Numpy, il faut utiliser la méthode `copy` de Numpy.|
-|Pour convertir une valeur en entier ou en chaîne de caractère, on peut utiliser les méthodes natives de Python `int` et `str`.|
-
-_Proposez une ligne de commande Python pour tester votre fonction sur un exemple d'automate. Obtenez-vous bien le résulat attendu ?_
-
-## Itération de l'automate
-
-Ça y est, nous avons à présent toutes les fonctions dont nous avons besoin pour faire tourner un automate cellulaire élémentaire.
-
-Nous allons définir une fonction appellant les fonction programmées précédemment, pour itérer un automate cellulaire donné, un nombre de fois donné, pour une initialisation donnée.
-
-Complétez la fonction `iterate_automaton` suivante :
-
-~~~
-def iterate_automaton(init_sequence,rule_number,nb_iterations):
-    
-    #Complétez ici
+    def __init__(self,rules_code,grid_size_x,grid_size_y):
         
-    return auto_mat
-~~~
-
-Elle prendra en entrée une chaîne de caractères `init_sequence` contenant la séquence de '0' et de '1' pour initialiser l'automate, un entier `rule_number` correspondant au numéro de règles (code de Wolfram) de l'automate, et un entier `nb_iterations` correspondant au nombre d'itérations pour lequel faire tourner l'automate.
-Elle retournera en sortie une matrice Numpy 2D concaténant verticalement les états de l'automate au fil des itérations.
-
-## Affichage de la simulation
-
-Votre automate cellulaire est prêt à tourner !
-
-Nous allons le tester en affichant la matrice Numpy 2D obtenue en sortie de `iterate_automaton` sous la forme d'une image en noir et blanc : un pixel blanc correspond à un 0, un pixel noir correspond à un 1.
-
-Voici une fonction `display_automaton`, qui vous permettra de réaliser un tel affichage à partir d'une matrice Numpy 2D `auto_mat`.
-
-~~~
-def display_automaton(auto_mat):
+		#Complétez ici
+        
+    def set_rules(self,rules_code):
+        
+		#Complétez ici
+        
+    def get_rules(self):
+        
+		#Complétez ici
+        
+    def set_random_grid(self,grid_size_x,grid_size_y):
+        
+		#Complétez ici
+        
+    def set_grid(self,grid):
+        
+		#Complétez ici
     
-    plt.imshow(auto_mat,cmap='binary')
-~~~
-
-Faites tourner l'automate n°110 pendant 300 itérations, avec la séquence d'initialisation suivante :
-
-'000000000000000000000000000000000000000000000000000000001110110100
-10001100000100111010110001011000001110111001100100100011001011001'
-
-Si vous affichez la matrice 2D obtenue sous la forme d'une image, vous devriez obtenir :
-
-![Simulation TP1](img/TP1_example.png)
-
-L'automate cellulaire élémentaire de règle n°110 est connu pour son comportement complexe, ni complètement chaotique, ni complètement ordonné, où des motifs semblent se déplacer et s'entrechoquer.
-Pour cette raison, il est souvent considéré comme le plus intéressant des automates cellulaires.
-
-Mais vous pouvez essayer d'autres règles ! Par exemple, les règles 30 et 90 donnent aussi des motifs amusants. 
-
-## Vers l'orienté objet
-
-Lors de ce TP, nous avons programmé les automates cellulaires élémentaires en paradigme **procédural**, afin de vous faire réviser les bases de la programmation avec Python.
-Cependant, programmer en paradigme **orienté objet** aurait ici été très pertinent.
-
-En effet, on peut voir un automate cellulaire élémentaire comme une classe d'automate, contenant des règles et une matrice 1D à laquelle peuvent s'appliquer des méthodes qui vont en changer les valeurs.
-
-_Avez-vous une idée des attributs et méthodes nécessaires à un automate cellulaire élémentaire ?_ 
-
-Transformons notre programme en orienté objet.
-Ouvrez un nouveau fichier Python, qui contiendra la classe `cellular_automaton` suivante :
-
-~~~
-class cellular_automaton:
-
-	def __init__(self,init_sequence,rule_number):
-	
-		self.set_rules(rule_number)
-		self.set_grid(init_sequence)
-		self.iteration = 0
-		
-	def set_rules(self,rule_number):
-		
+    def get_grid(self):
+        
 		#Complétez ici
-		
+    
+    def get_grid_size(self):
+        
+		#Complétez ici
+                
+    def get_neighbors(self):
+        
+		#Complétez ici
+        
+    def get_iteration(self):
+        
+		#Complétez ici
+        
+    def iterate_grid(self,nb_iterations):
+	
+        #Complétez ici
+        
+    def display_grid(self):
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.show()
+        
+    def save_grid(self):
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.savefig('automaton_'+str(self.iteration)+'.png')
+        plt.close()
+~~~
+
+Vous devrez compléter petit à petit les méthodes de cette classe.
+
+Pour commencer, complétez le constructeur :
+
+~~~
+    def __init__(self,rules_code,grid_size_x,grid_size_y):
+        
+		#Complétez ici
+~~~
+
+Il prendra en entrée une chaîne de caractères `rules_code` contenant la définition de l'automate au format 'B/S', et 2 entiers `grid_size_x` et `grid_size_y` contenant les dimensions de la grille de l'automate.
+
+Il initialisera 3 attributs d'instance de la manière suivante :
+
+* `rules` en utilisant une méthode `set_rules`, qui prendra en entrée `rules_code`, et que nous programmerons plus tard.
+
+* `grid` en utilisant une méthode `set_random_grid`, qui prendra en entrée `grid_size_x` et `grid_size_y`, et que nous programmerons plus tard.
+
+* `iteration` directement initialisé à 0, et qui nous servira à suivre le nombre d'itération pour lequel a tourné l'automate.
+
+Pour rappel, le constructeur est la méthode appelée à la création d'une instance d'une classe.
+
+_Quelle ligne de commande Pythn utiliseriez-vous pour créer un automate cellulaire "Jeu de la Vie" de Conway, avec une grille 100x100 ?_ 
+
+## Définir les getters
+
+~~~
 	def get_rules(self):
-		
-		#Complétez ici
-		
-	def set_grid(self):
-	
-		#Complétez ici
-	
-	def get_grid(self):
-	
-		#Complétez ici
-		
-	def update(self);
-	
-		#Complétez ici
-		
-	def iterate(self,nb_iterations):
-		
-		#Complétez ici
-		
-	def display(self):
-	
+        
 		#Complétez ici
 ~~~
 
-Essayez de compléter la classe `cellular_automaton` en vous basant sur les fonctions que vous avez codées précédemment.
+~~~
+	def get_grid(self):
+        
+		#Complétez ici
+~~~
 
-Créez une instance de votre automate pour la règle n°110, et faites un affichage du résultat de 300 itérations, pour la même séquence d'initialisation que précédemment.
-Vérifiez que vous obtenez bien le même résultat.
+~~~
+    def get_grid_size(self):
+        
+		#Complétez ici
+~~~
 
----
-Bravo ! Vous avez écrit votre 1er programme en **orienté objet** !
-Lors des TP suivants, nous programmerons des automates cellulaires plus complexes, directement dans ce paradigme.
+~~~
+    def get_neighbors(self):
+        
+		#Complétez ici
+~~~
+
+~~~ 
+    def get_iteration(self):
+        
+		#Complétez ici
+~~~
+
+## Définir les setters
+
+~~~
+    def set_rules(self,rules_code):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def set_random_grid(self,grid_size_x,grid_size_y):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def set_grid(self,grid):
+        
+		#Complétez ici
+~~~
+
+## Méthode pour itérer l'automate
+
+~~~
+    def iterate_grid(self,nb_iterations):
+	
+        #Complétez ici
+~~~
+
+## Instanciation et simulation
+
+![Simulation TP1](img/TP1_example.gif)
+
+## Vers la notion d'héritage
