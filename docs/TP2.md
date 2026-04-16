@@ -58,7 +58,7 @@ _Vérifions si vous avez bien compris. L'automate cellulaire "diamoeba" est déf
 
 Lors de ce TP, nous allons programmer un automate cellulaire de type "life-like", sous la forme d'une **classe** Python avec des attributs et des méthodes qu'il nous faudra définir.
 
-**N'oubliez d'importer Numpy et Matplotlib au début de votre programme !**
+**N'oubliez pas d'importer Numpy et Matplotlib au début de votre programme !**
 
 ## Définition de classe et constructeur
 

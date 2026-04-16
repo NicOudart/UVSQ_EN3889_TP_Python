@@ -61,7 +61,7 @@ Lors de ce TP, nous allons programmer un automate cellulaire élémentaire de co
 
 Nous allons diviser ce problème complexe en fonctions simples : nous ferons donc ici de la **programmation procédurale**.
 
-**N'oubliez d'importer Numpy et Matplotlib au début de votre programme !**
+**N'oubliez pas d'importer Numpy et Matplotlib au début de votre programme !**
 
 ## Déterminer les règles de l'automate
 
