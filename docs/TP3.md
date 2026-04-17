@@ -4,7 +4,7 @@
 
 ---
 
-## Wire-world - partie 1
+## Wire-world
 
 ## Affichage de la simulation
 
