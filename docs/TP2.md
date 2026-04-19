@@ -221,11 +221,11 @@ class turmite(2D_cellular_automaton):
         
 		#Complétez ici
     
-    def turn(self,direction):
+    def __turn(self,direction):
         
 		#Complétez ici
         
-    def move(self):
+    def __move(self):
         
         #Complétez ici
     
@@ -309,13 +309,13 @@ class turmite(2D_cellular_automaton):
 ### Itération de l'automate
 
 ~~~
-    def turn(self,direction):
+    def __turn(self,direction):
         
 		#Complétez ici
 ~~~
 
 ~~~
-    def move(self):
+    def __move(self):
         
         #Complétez ici
 ~~~
