@@ -124,9 +124,53 @@ Cette structure doit vous dire quelque chose : elle ressemble beaucoup à celle 
 
 ### Constructeur
 
+~~~
+    def __init__(self,grid_size_x,grid_size_y):
+        
+		#Complétez ici
+~~~
+
 ### Getters
 
+~~~
+    def get_grid(self):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def get_rules(self):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def get_iteration(self):
+        
+		#Complétez ici
+~~~
+
 ### Setters
+
+~~~
+    def set_grid(self,grid):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def set_rules(self,rules_code):
+        
+		#Complétez ici
+~~~
+
+### Itération de l'automate
+
+~~~
+    def iterate_grid(self):
+		
+		#Complétez ici
+~~~
 
 ## Définition de la classe fille
 
@@ -192,9 +236,95 @@ class turmite(2D_cellular_automaton):
 
 ### Constructeur
 
+~~~
+    def __init__(self,grid_size_x,grid_size_y,rules_code,state,pos_x,pos_y,orientation):
+        
+		#Complétez ici
+~~~
+
 ### Getters
 
+~~~
+    def get_rules(self):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def get_state(self):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def get_position(self):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def get_value(self):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def get_orientation(self):
+        
+		#Complétez ici
+~~~
+
 ### Setters
+
+~~~
+    def set_rules(self,rules_code):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def set_state(self,state):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def set_position(self,pos_x,pos_y):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def set_value(self,value):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def set_orientation(self,orientation):
+        
+		#Complétez ici
+~~~
+
+### Itération de l'automate
+
+~~~
+    def turn(self,direction):
+        
+		#Complétez ici
+~~~
+
+~~~
+    def move(self):
+        
+        #Complétez ici
+~~~
+
+~~~
+    def iterate_grid(self,nb_iterations):
+        
+        #Complétez ici
+~~~
 
 ## Instanciation et simulation
 
