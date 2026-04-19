@@ -306,7 +306,7 @@ class turmite(2D_cellular_automaton):
 		#Complétez ici
 ~~~
 
-### Itération de l'automate
+### Méthodes privées
 
 ~~~
     def __turn(self,direction):
@@ -319,6 +319,8 @@ class turmite(2D_cellular_automaton):
         
         #Complétez ici
 ~~~
+
+### Itération de l'automate
 
 ~~~
     def iterate_grid(self,nb_iterations):
