@@ -17,7 +17,7 @@ A chaque itération, la fourmi ne peut se déplacer que d'une case.
 Suivant les règles de l'automate, la fourmi peut changer ou non de direction, et changer ou non la valeur de la case sur laquelle elle se trouve.
 
 Pour les automates vus aux TP précédents, chaque case pouvait potentiellement changer de valeur à chaque itération.
-Dans le cas des "turmites", seule la case où se trouve la fourmi peut change de valeur à une itération donnée.
+Dans le cas des "turmites", seule la case où se trouve la fourmi peut changer de valeur à une itération donnée.
 
 La "**fourmi de Langton**" est probablement le "turmite" le plus connu.
 Imaginé en 1986 par l'informaticien américain Christopher Langton, il est connu pour faire émerger un comportement ordonné et cyclique appelé "la route", après des milliers d'itérations d'un comportement chaotique.
@@ -66,9 +66,16 @@ Pour la fourmi de Langton, on parlera de règle '**1R0/0L0/1R1/0L1**'.
 
 _Vérifions si vous avez bien compris. Quelles règles suivra l'automate '1L1/1L1/1R1/0N0' ? Pour vous aider, écrivez le tableau correspondant._
 
+Lors de ce TP, nous allons programmer un automate cellulaire de type "turmite", sous la forme de 2 classes Python : une **classe mère** commune à tous les automates cellulaires 2D, et une **classe fille** propre aux automates "turmites", qui **héritera** de la classe mère.
+
 **N'oubliez pas d'importer Numpy et Matplotlib au début de votre programme !**
 
 ## Définition de la classe mère
+
+Nous allons commencer par définir la classe mère `2D_cellular_automaton`, qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D.
+Pour définir un automate cellulaire en particulier, il suffira de définir une classe fille héritant de cette classe mère, sans avoir besoin de tout réécrire.
+
+Voici la structure de la classe mère que nous allons programmer :
 
 ~~~
 class 2D_cellular_automaton:
@@ -112,6 +119,8 @@ class 2D_cellular_automaton:
         plt.savefig('automaton_'+str(self.iteration)+'.png')
         plt.close()
 ~~~
+
+Cette structure doit vous dire quelque chose : elle ressemble beaucoup à celle de la classe programmée lors du TP précédent.
 
 ### Constructeur
 

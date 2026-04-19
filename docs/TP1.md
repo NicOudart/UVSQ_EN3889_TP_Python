@@ -62,7 +62,7 @@ Lors de ce TP, nous allons programmer un automate cellulaire de type "life-like"
 
 ## Définition de classe et constructeur
 
-Pour définir un automate cellulaire "life-like" dans Python, nous allons créer une classe "life-like", qui définira les attributs et méthodes nécessaires à tous les automates cellulaires.
+Pour définir un automate cellulaire "life-like" dans Python, nous allons créer une classe `life-like`, qui définira les attributs et méthodes nécessaires à tous les automates cellulaires.
 Il suffira ensuite de créer une instance de cette classe pour pouvoir simuler un automate cellulaire "life-like" en particulier.
 
 Voici la structure de la classe que nous allons programmer :
