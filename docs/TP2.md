@@ -72,7 +72,7 @@ Lors de ce TP, nous allons programmer un automate cellulaire de type "turmite", 
 
 ## Définition de la classe mère
 
-Nous allons commencer par définir la classe mère `2D_cellular_automaton`, qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D.
+Nous allons commencer par définir la **classe mère** `2D_cellular_automaton`, qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D.
 Pour définir un automate cellulaire en particulier, il suffira de définir une classe fille héritant de cette classe mère, sans avoir besoin de tout réécrire.
 
 Voici la structure de la classe mère que nous allons programmer :
@@ -122,7 +122,11 @@ class 2D_cellular_automaton:
 
 Cette structure doit vous dire quelque chose : elle ressemble beaucoup à celle de la classe programmée lors du TP précédent.
 
+Vous devrez compléter petit à petit les méthodes de cette classe.
+
 ### Constructeur
+
+Pour commencer, complétez le **constructeur** :
 
 ~~~
     def __init__(self,grid_size_x,grid_size_y):
@@ -130,7 +134,21 @@ Cette structure doit vous dire quelque chose : elle ressemble beaucoup à celle 
 		#Complétez ici
 ~~~
 
+Il prendra en entrée 2 entiers `grid_size_x` et `grid_size_y` contenant les dimensions de la grille de l'automate.
+
+Il initialisera 2 attributs d'instance de la manière suivante :
+
+* `grid` en utilisant une méthode set_grid, qui prendra en entrée une matrice Numpy 2D ne contenant que des 0 de dimensions `grid_size_x` et `grid_size_y`, et que nous programmerons plus tard.
+
+* `iteration` directement initialisé à 0, et qui nous servira à suivre le nombre d'itération pour lequel a tourné l'automate depuis son initialisation.
+
+_Quelle ligne de commande utiliseriez-vous pour créer un automate cellulaire 2D quelconque de dimensions 100x100 ?_
+
 ### Getters
+
+Nous allons à présent compléter les "**getters**".
+
+Complétez la méthode `get_grid` suivante :
 
 ~~~
     def get_grid(self):
@@ -138,11 +156,25 @@ Cette structure doit vous dire quelque chose : elle ressemble beaucoup à celle 
 		#Complétez ici
 ~~~
 
+Elle devra retourner une copie Numpy de l'attribut d'instance `grid`.
+Cet attribut contiendra la grille de l'automate cellulaire.
+
+Complétez la méthode `get_rules` suivante :
+
 ~~~
     def get_rules(self):
         
 		#Complétez ici
 ~~~
+
+Cette méthode n'ayant pas de sens tant que le type exact d'automate (et donc de règle) n'est pas connu, elle ne sera donc pas implémentée tout de suite.
+Mais il s'agit d'une méthode nécessaire à tout automate cellulaire 2D, et devra donc être définie spécifiquement dans chaque classe fille.
+
+Différentes classes filles pourront donc avoir différentes implémentations de `get_rules` : c'est le principe du **polymorphisme**.
+
+La méthode `get_rules` renverra donc juste un message d'erreur de type `NotImplementedError`.
+
+Complétez la méthode `get_iteration` suivante :
 
 ~~~
     def get_iteration(self):
@@ -150,7 +182,14 @@ Cette structure doit vous dire quelque chose : elle ressemble beaucoup à celle 
 		#Complétez ici
 ~~~
 
+Elle devra retourner l'attribut d'instance `iteration`.
+Cet attribut contiendra le nombre d'itérations effectuées par l'automate depuis son initialisation.
+
 ### Setters
+
+Nous allons à présent compléter les "**setters**".
+
+Complétez la méthode `set_grid` suivante :
 
 ~~~
     def set_grid(self,grid):
@@ -158,13 +197,28 @@ Cette structure doit vous dire quelque chose : elle ressemble beaucoup à celle 
 		#Complétez ici
 ~~~
 
+Elle prendra en entrée une matrice 2D Numpy `grid`, et affectera une copie Numpy de cette matrice à l'attribut d'instance `grid`.
+
+Ainsi, cette méthode permettra de mettre à jour l'attribut `grid` de l'automate avec une nouvelle grille.
+
 ~~~
     def set_rules(self,rules_code):
         
 		#Complétez ici
 ~~~
 
+Tout comme pour `get_rules`, cette fonction est nécessaire à tout automate cellulaire 2D, mais doit être définie spécifiquement pour chaque type d'automate.
+
+Elle renverra donc juste un message d'erreur de type `NotImplementedError`.
+
 ### Itération de l'automate
+
+Les automates cellulaires étant des algorithmes itératifs, tout automate cellulaire 2D a besoin d'une méthode pour être itéré.
+Cependant, le contenu exact de la méthode va dépendre du type d'automate que nous cherchons à implémenter.
+
+Une fois de plus, nous allons donc définir un patron de méthode, qui devra être adapté dans les différentes classes filles.
+
+Complétez la méthode `iterate_grid` suivante :
 
 ~~~
     def iterate_grid(self):
@@ -172,7 +226,36 @@ Cette structure doit vous dire quelque chose : elle ressemble beaucoup à celle 
 		#Complétez ici
 ~~~
 
+Elle renverra juste un message d'erreur de type `NotImplementedError`.
+
+### Affichage et export
+
+Ajoutez les méthodes suivantes à votre classe mère :
+
+~~~
+    def display_grid(self):
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.show()
+        
+    def save_grid(self):
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.savefig('automaton_'+str(self.iteration)+'.png')
+        plt.close()
+~~~
+
+La méthode `display_grid` servira à afficher l'état de la grille de l'automate à l'itération actuelle, sous la forme d'une image en noir et blanc (un pixel noir correspond à une case 1, un pixel blanc à une case 0).
+
+La méthode `save_grid` servira à enregistrer une telle image de l'état de la grille de l'automate à l'itération actuelle, au format PNG.
+
+Ces méthodes étant utiles pour tous les types d'automates cellulaires 2D, elles sont dans la classe mère.
+
 ## Définition de la classe fille
+
+Maintenant que nous avons définit les attributs et méthodes communs à tous les automates cellulaires 2D, nous pouvons définir une **classe fille** `turmite`, qui va **hériter** de ces méthodes et attributs.
+
+Voici la structure de la classe fille que nous allons programmer :
 
 ~~~
 class turmite(2D_cellular_automaton):
@@ -233,6 +316,16 @@ class turmite(2D_cellular_automaton):
         
         #Complétez ici
 ~~~
+
+Vous devriez remarquer que certaines des méthodes "non implémentées" que nous avions définies dans la classe mère seront **redéfinies** dans la classe fille.
+Une autre classe fille pourra également redéfinir ces méthodes d'une autre manière : c'est le principe du **polymorphisme**.
+
+Vous devriez également remarquer que 2 des méthodes sont **privées**.
+Elles n'auront donc pas vocation à être appelées de l'extérieur.
+
+_Avez-vous repéré quelles méthodes sont privées ? Comment savez-vous que ces méthodes sont privées ?_
+
+Vous devrez compléter petit à petit les méthodes de cette classe.
 
 ### Constructeur
 

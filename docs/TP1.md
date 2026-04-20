@@ -173,10 +173,10 @@ Complétez la méthode `get_grid` suivante :
 		#Complétez ici
 ~~~
 
-Elle devra retourner l'attribut d'instance `grid`, que nous définirons plus tard.
+Elle devra retourner une copie Numpy de l'attribut d'instance `grid`, que nous définirons plus tard.
 Cet attribut contiendra la grille de l'automate cellulaire.
 
-Complétez la mathode `get_grid_size` suivante :
+Complétez la méthode `get_grid_size` suivante :
 
 ~~~
     def get_grid_size(self):
@@ -270,7 +270,7 @@ Complétez la méthode `set_grid` suivante :
 		#Complétez ici
 ~~~
 
-Elle prendra en entrée une matrice 2D Numpy `grid`, et affectera cette matrice à l'attribut d'instance `grid`.
+Elle prendra en entrée une matrice 2D Numpy `grid`, et affectera une copie Numpy de cette matrice à l'attribut d'instance `grid`.
 
 Ainsi, cette méthode permettra de mettre à jour l'attribut `grid` de l'automate avec une nouvelle grille.
 
