@@ -92,7 +92,7 @@ class 2D_cellular_automaton:
         
 		#Complétez ici
         
-    def set_rules(self,rules_code):
+    def set_rules(self):
         
 		#Complétez ici
         
@@ -202,7 +202,7 @@ Elle prendra en entrée une matrice 2D Numpy `grid`, et affectera une copie Nump
 Ainsi, cette méthode permettra de mettre à jour l'attribut `grid` de l'automate avec une nouvelle grille.
 
 ~~~
-    def set_rules(self,rules_code):
+    def set_rules(self):
         
 		#Complétez ici
 ~~~
@@ -317,6 +317,8 @@ class turmite(2D_cellular_automaton):
         #Complétez ici
 ~~~
 
+_Comment avons-nous indiqué à Python que la classe `turmite` hérite de la classe `2D_cellular_automaton` ?_
+
 Vous devriez remarquer que certaines des méthodes "non implémentées" que nous avions définies dans la classe mère seront **redéfinies** dans la classe fille.
 Une autre classe fille pourra également redéfinir ces méthodes d'une autre manière : c'est le principe du **polymorphisme**.
 
@@ -329,13 +331,39 @@ Vous devrez compléter petit à petit les méthodes de cette classe.
 
 ### Constructeur
 
+Pour commencer, complétez le **constructeur** :
+
 ~~~
     def __init__(self,grid_size_x,grid_size_y,rules_code,state,pos_x,pos_y,orientation):
         
 		#Complétez ici
 ~~~
 
+Elle prendra en entrée 2 entiers `grid_size_x` et `grid_size_y` contenant les dimensions de la grille de l'automate, une chaîne de caractères `rules_code` contenant les règles du "turmite", un entier `state` contenant l'état initial de la fourmi, 2 entiers `pos_x` et `pos_y` contenant la position initial de la fourmi sur la grille, et une chaîne de caractère `orientation` contenant l'orientation initiale de la fourmi ('up','down','right','left').
+
+Elle appellera le constructeur de la classe mère avec les entrées `grid_size_x` et `grid_size_y`.
+
+Ensuite, elle initialisera 4 attributs d'instance de la manière suivante :
+
+* `rules` en utilisant une méthode `set_rules`, qui prendra en entrée `rules_code`, et que nous définirons plus tard.
+
+* `state` en utilisant une méthode `set_state`, qui prendra en entrée `state`, et que nous définirons plus tard.
+
+* `position` en utilisant une méthode `set_position`, qui prendra en entrée `pos_x` et `pos_y`, et que nous définirons plus tard.
+
+* `orientation` en utilisant une méthode `set_orientation`, qui prendra en entrée `orientation`, et que nous définirons plus tard.
+
+|Aide|
+|:-|
+|Pour appeler le constructeur de la classe mère dans la classe fille, on utilise `super().__init__()`, avec les entrées nécessaires pour créer une instance de la classe mère.|
+
+_Quelle ligne de commande Python utiliseriez-vous pour créer une fourmi de Langton, avec une grille 100x100, les un état initial à 0, une position initiale à (0,0) et une orientation 'up'?_
+
 ### Getters
+
+Nous allons à présent compléter les "**getters**".
+
+Complétez la méthode `get_rules` suivante :
 
 ~~~
     def get_rules(self):
@@ -343,11 +371,21 @@ Vous devrez compléter petit à petit les méthodes de cette classe.
 		#Complétez ici
 ~~~
 
+Elle devra retourner l'attribut d'instance `rules`.
+Cet attribut contiendra les règles de l'automate cellulaire.
+
+Complétez la méthode `get_state` suivante :
+
 ~~~
     def get_state(self):
         
 		#Complétez ici
 ~~~
+
+Elle devra retourner l'attribut d'instance `state`.
+Cet attribut contiendra l'état de la fourmi.
+
+Complétez la méthode `get_position` suivante :
 
 ~~~
     def get_position(self):
@@ -355,11 +393,20 @@ Vous devrez compléter petit à petit les méthodes de cette classe.
 		#Complétez ici
 ~~~
 
+Elle devra retourner l'attribut d'instance `position`.
+Cet attribut contiendra la position de la fourmi sur la grille de l'automate.
+
+Complétez la méthode `get_value` suivante :
+
 ~~~
     def get_value(self):
         
 		#Complétez ici
 ~~~
+
+Elle devra retourner la valeur de la case de la grille sur laquelle se trouve la fourmi.
+
+Complétez la méthode `get_orientation` suivante :
 
 ~~~
     def get_orientation(self):
@@ -367,13 +414,25 @@ Vous devrez compléter petit à petit les méthodes de cette classe.
 		#Complétez ici
 ~~~
 
+Elle devra retourner l'attribut d'instance `orientation`.
+Cet attribut contiendra l'orientation de la fourmi.
+
 ### Setters
+
+Nous allons à présent compléter les "**setters**".
+
+Complétez la méthode `set_rules` suivante :
 
 ~~~
     def set_rules(self,rules_code):
         
 		#Complétez ici
 ~~~
+
+Elle prendra en entrée une chaîne de caractères `rules_code` contenant la définition des règles de l'automate au format décrit plus tôt.
+Elle affectera à l'attribut d'instance `rules` une liste de liste, chaque liste contenant les 3 éléments entre slashs de la règle.
+
+Par exemple, pour la fourmi de Langton, on obtiendra : `[[1,'R',0],[0,'L',0],[1,'R',1],[0,'L',1]]`.
 
 ~~~
     def set_state(self,state):
