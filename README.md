@@ -23,10 +23,6 @@ Nous introduirons progressivement les concepts vus en cours lors de 3 séances d
 
 Chaque TP fera l'objet d'une note de séance.
 
-Si vous avez terminé les 3 TP avant la fin des séances, vous trouverez également un TP bonus :
-
-* **Bonus** : D'autres méthodes spéciales
-
 Enfin, vous trouverez des exemples de sujets d'examen des données précédentes pour vous entrainer chez vous :
 
 * **TP examen 2025**
