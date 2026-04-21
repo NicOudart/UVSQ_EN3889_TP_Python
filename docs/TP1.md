@@ -281,7 +281,7 @@ _A votre avis, pour il n'existe pas de setter pour l'attribut `iteration` ?_
 ## Méthode pour itérer l'automate
 
 Nous allons à présent programmer le coeur d'un automate cellulaire : une méthode qui permette de l'itérer un nombre donné de fois.
-L'idée sera d'appeler dans cette méthode des getters et setters programmés précédemment.
+L'idée sera d'appeler dans cette méthode d'autres méthodes programmées précédemment.
 
 Complétez donc la méthode `iterate_grid` suivante :
 

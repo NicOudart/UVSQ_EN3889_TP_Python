@@ -434,11 +434,19 @@ Elle affectera à l'attribut d'instance `rules` une liste de liste, chaque liste
 
 Par exemple, pour la fourmi de Langton, on obtiendra : `[[1,'R',0],[0,'L',0],[1,'R',1],[0,'L',1]]`.
 
+Complétez la méthode `set_state` suivante :
+
 ~~~
     def set_state(self,state):
         
 		#Complétez ici
 ~~~
+
+Elle prendra en entrée un entier 0 ou 1 `state`, et affectera cette valeur à l'attribut d'instance `state`.
+
+Ainsi, cette méthode permettra de mettre à jour l'état de la fourmi.
+
+Complétez la méthode `set_position` suivante :
 
 ~~~
     def set_position(self,pos_x,pos_y):
@@ -446,11 +454,23 @@ Par exemple, pour la fourmi de Langton, on obtiendra : `[[1,'R',0],[0,'L',0],[1,
 		#Complétez ici
 ~~~
 
+Elle prendra en entrée 2 entiers `pos_x` et `pos_y`, et affectera un tuple contenant `pos_x` et `pos_y` à l'attribut d'instance `position`.
+
+Ainsi, la méthode permettra de mettre à jour la position de la fourmi sur la grille de l'automate.
+
+Complétez la méthode `set_value` suivante :
+
 ~~~
     def set_value(self,value):
         
 		#Complétez ici
 ~~~
+
+Elle prendra en entrée un entier 0 ou 1 `value`, et affectera cette valeur à la case de la grille sur laquelle se trouve la fourmi.
+
+Ainsi, la méthode permettra de mettre à jour la valeur de la case sur laquelle se trouve la fourmi.
+
+Complétez la méthode `set_orientation` suivante :
 
 ~~~
     def set_orientation(self,orientation):
@@ -458,7 +478,20 @@ Par exemple, pour la fourmi de Langton, on obtiendra : `[[1,'R',0],[0,'L',0],[1,
 		#Complétez ici
 ~~~
 
+Elle prendra en entrée une chaîne de caractères `orientation` contenant 'up', 'down', 'left' ou 'right', et affectera cette chaîne de caractères à l'attribut d'instance `orientation`.
+
+Ainsi, la méthode permettra de mettre à jour l'orientation de la fourmi.
+
 ### Méthodes privées
+
+Comme nous l'avions remarqué précédemment, notre classe fille `turmite` aura 2 **méthodes privées** `__turn` et `__move`.
+
+Ces méthodes serviront respectivement à faire tourner et avancer la fourmi.
+
+Elles n'auront pas vocation à être appelées de l'extérieur de la classe, mais par la méthode d'itération du "turmite".
+D'où le fait qu'elles soient privées : nous ne voulons pas qu'un utilisateur fasse tourner ou bouger la fourmi par erreur en dehors des itérations de l'automate.
+
+Complétez la méthode `__turn` suivante :
 
 ~~~
     def __turn(self,direction):
@@ -466,13 +499,30 @@ Par exemple, pour la fourmi de Langton, on obtiendra : `[[1,'R',0],[0,'L',0],[1,
 		#Complétez ici
 ~~~
 
+Elle prendra en entrée une chaîne de caractères `direction`, contenant 'R', 'L', 'U' ou 'N', indiquant respectivement si la fourmi doit tourner à droite, à gauche, faire demi-tour ou garder son orientation actuelle.
+
+Elle modifiera l'attribut d'instance `orientation` par une nouvelle chaîne de caractère 'up', 'down', 'left' ou 'right', correspondant à la nouvelle orientation de la fourmi après changement d'orientation.
+
+Par exemple, une fourmi à l'orientation 'left' à laquelle on applique `__turn` avec l'entrée 'R' au la nouvelle orientation 'up'.
+
+_Vérifions si vous avez bien compris le principe : si j'applique `__turn` à une foumi qui a l'orientation 'up', avec comme entrée 'U', quelle sera sa nouvelle orientation ?_
+
+Complétez la méthode `__move` suivante :
+
 ~~~
     def __move(self):
         
         #Complétez ici
 ~~~
 
+Elle modifiera l'attribut d'instance `position`, pour déplacer la fourmi d'une case dans la direction de son orientation : en haut si 'up', en bas si 'down', à gauche si 'left', à droite si 'right'.
+
 ### Itération de l'automate
+
+Nous allons à présent programmer la méthode qui permettra de d'itérer un "turmite" un nombre donné de fois.
+L'idée sera d'appeler dans cette méthode d'autres méthodes programmées précédemment.
+
+Complétez donc la méthode `iterate_grid` suivante :
 
 ~~~
     def iterate_grid(self,nb_iterations):
@@ -480,11 +530,77 @@ Par exemple, pour la fourmi de Langton, on obtiendra : `[[1,'R',0],[0,'L',0],[1,
         #Complétez ici
 ~~~
 
+Pour le nombre entier d'itérations `nb_iterations` donné en entrée, elle appliquera les règles du "turmite" (stockées dans l'attribut d'instance `rules`) à la fourmi et la case de la grille sur laquelle elle se trouve.
+Pour chaque itération, on incrémentera de 1 l'attribut d'instance `iteration`.
+
+_Voyons si vous avez tout compris :_
+_Comment feriez-vous pour itérer 10 fois une instance de "turmite" `ant` ?_
+
 ## Instanciation et simulation
+
+Ça y est, votre automate cellulaire "turmite" est prêt à tourner !
+
+Faites tourner la "Fourmi de Langton" (règle '1R0/0L0/1R1/0L1') pour 11500 itérations, sur une grille 100x100 avec la fourmi initialisée au centre, la fourmi étant dans l'état initial 0, et orientée 'up'.
+Enregistrez une image PNG de la grille de l'automate toutes les 100 itérations.
+
+Si vous regardez les images PNG obtenues, vous devriez voir un comportement similaire à celui-ci :
 
 ![Simulation TP2](img/TP2_example.gif)
 
+Après des milliers d'itérations de déplacement chaotique, le fameux comportement émergent appelé "route" apparait clairement.
+
+Mais il existe bien d'autres "turmites" au comportement intéressant.
+Voici quelques exemples que vous pouvez essayer :
+
+|Nom de l'automate|Règles         |
+|:---------------:|:-------------:|
+|Fourmi de Langton|1R0/0L0/1R1/0L1|
+|Fibonacci        |1L1/1L1/1R1/0N0|
+|Worm trails      |1R1/1L1/1R1/0R0|
+|Snowflake        |0R1/1R1/1L1/1L0|
+|Contoured island |0R1/0N1/1R1/1L0|
+|Balloon bursting |1L0/1R1/0R1/1L0|
+
 ## Vers les méthodes spéciales
+
+Lors de ce TP, nous avons définit un automate cellulaire "turmite" ne faisant se déplacer qu'une seule fourmi sur la grille.
+
+Imaginons à présent que nous voulions programmer un automate cellulaire "turmite" contenant plusieurs foumis se déplaçant sur une même grille.
+Comment pourrions adapter le programme que nous venons de réaliser ?
+
+Pour commencer, nous pourrions définir une classe `ant`, contenant les attributs et méthodes propres à une fourmi.
+Ensuite, une autre classe `colony`, servirait de conteneur à fourmis (instances de la classe `ant`), comme une "colonie de fourmis".
+Enfin, la classe `turmite` serait initialisée avec une instance de `colony`.
+
+Ouvrez un nouveau fichier Python, et essayer de compléter les classes suivantes et vous basant sur votre programme précédemment :
+
+~~~
+class 2D_cellular_automaton:
+
+	#Complétez ici
+	
+class turmite(2D_cellular_automaton):
+
+	#Complétez ici
+	
+class colony():
+
+	#Complétez ici
+	
+class ant():
+
+	#Complétez ici
+~~~
+
+La classe `colony` devra permettre d'ajouter / retirer des fourmis au conteneur avec les opérateur `+` et `-`, d'obtenir le nombre de fourmis contenus avec la méthode `len`, et d'itérer sur les fourmis d'une colonie.
+
+Pour faire ceci, vous aurez besoin d'un concept nouveau : les **méthodes spéciales** Python.
+
+_Comment définit-on une méthode spéciale en Python ?_
+
+Vous pouvez tester votre nouvelle implémentation sur les mêmes exemples de "turmites" que précédemment.
 
 ---
 
+Bravo ! Vous avez compris les notions d'**héritage** et de **polymorphisme**.
+Lors des TP suivants, nous programmerons un nouveau type d'automates cellulaire, pour lequel nous aurons besoin de méthodes spéciales Python.
