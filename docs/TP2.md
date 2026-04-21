@@ -19,9 +19,13 @@ Suivant les règles de l'automate, la fourmi peut changer ou non de direction, e
 Pour les automates vus aux TP précédents, chaque case pouvait potentiellement changer de valeur à chaque itération.
 Dans le cas des "turmites", seule la case où se trouve la fourmi peut changer de valeur à une itération donnée.
 
+![Illustration de turmite](img/TP2_turmite.gif)
+
 La "**fourmi de Langton**" est probablement le "turmite" le plus connu.
 Imaginé en 1986 par l'informaticien américain Christopher Langton, il est connu pour faire émerger un comportement ordonné et cyclique appelé "la route", après des milliers d'itérations d'un comportement chaotique.
 Ce comportement fini toujours par apparaitre, qu'importe l'initialisation de la grille.
+
+![La fourmi de Langton](img/TP2_Langton_ant.png)
 
 Depuis, d'autres turmites aux comportements intéressants ont été découverts.
 
@@ -38,6 +42,8 @@ La fourmi d'un "turmite" est caractérisée par 4 propriétés :
 * La **valeur de la case** sur laquelle elle se trouve (0 ou 1).
 
 * L'**état interne** de la fourmi (0 ou 1).
+
+![Propriétés des fourmis](img/TP2_ant_properties.gif)
 
 A chaque itération de l'automate, la fourmi va réaliser les opérations suivantes, dans cet ordre :
 
@@ -339,7 +345,7 @@ Pour commencer, complétez le **constructeur** :
 		#Complétez ici
 ~~~
 
-Elle prendra en entrée 2 entiers `grid_size_x` et `grid_size_y` contenant les dimensions de la grille de l'automate, une chaîne de caractères `rules_code` contenant les règles du "turmite", un entier `state` contenant l'état initial de la fourmi, 2 entiers `pos_x` et `pos_y` contenant la position initial de la fourmi sur la grille, et une chaîne de caractère `orientation` contenant l'orientation initiale de la fourmi ('up','down','right','left').
+Elle prendra en entrée 2 entiers `grid_size_x` et `grid_size_y` contenant les dimensions de la grille de l'automate, une chaîne de caractères `rules_code` contenant les règles du "turmite", un entier `state` contenant l'état initial de la fourmi, 2 entiers `pos_x` et `pos_y` contenant la position initial de la fourmi sur la grille, et une chaîne de caractère `orientation` contenant l'orientation initiale de la fourmi ('up', 'down', 'right', 'left').
 
 Elle appellera le constructeur de la classe mère avec les entrées `grid_size_x` et `grid_size_y`.
 
