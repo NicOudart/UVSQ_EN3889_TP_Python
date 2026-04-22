@@ -186,7 +186,7 @@ Faites tourner l'automate n°110 pendant 300 itérations, avec la séquence d'in
 
 Si vous affichez la matrice 2D obtenue sous la forme d'une image, vous devriez obtenir :
 
-![Simulation TP préparation](img/TP_preparation_example.png)
+![Simulation TP préparation](img/TP_preparation_iteration.png)
 
 L'automate cellulaire élémentaire de règle n°110 est connu pour son comportement complexe, ni complètement chaotique, ni complètement ordonné, où des motifs semblent se déplacer et s'entrechoquer.
 Pour cette raison, il est souvent considéré comme le plus intéressant des automates cellulaires élémentaires.

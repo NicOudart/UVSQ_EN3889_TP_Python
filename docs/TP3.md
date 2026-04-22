@@ -28,7 +28,7 @@ Si une case est à la valeur :
 On initialise un circuit en positionnant des 0 et des 1 sur la grille.
 Ensuite, on ajoute un ou plusieurs électrons quelque part sur du conducteur, avec un 2 et un 3 collés l'un à l'autre.
 
-On itère alors les règles suivantes :
+Les cases de la grille changent ou non de valeur à chaque itération, suivant les règles suivantes :
 
 * Si une case est à 0, elle restera toujours à 0.
 
@@ -39,7 +39,21 @@ On itère alors les règles suivantes :
 * Si une case est à 1, si 1 ou 2 de ses voisins (voisinage de Moore) est à la valeur 3, alors elle passe à 3 à l'itération suivante.
 Sinon, elle reste à 1.
 
+![Règles de Wire-world](img/TP3_iteration.gif)
+
 Avec ce jeu de règles simples, on peut simuler différent types de composants de la vie réelle : des câbles électriques, des diodes, des horloges, des portes logiques, et même des transistors.
+
+Lors de ce TP, nous allons programmer un automate cellulaire "Wire-world", sous la forme de plusieurs classes Python :
+
+* Des classes pour un électron et un conteneur d'életrons (que l'on appelera "charges").
+
+* Des classes pour les composants, et un conteneur de composants (que l'on appelera "circuit").
+
+* Une classe pour un automate cellulaire 2D de manière générale, et une classe pour un automate "Wire-world" en particulier.
+
+Ces classes feront appel à des **méthodes spéciales** Python.
+
+**N'oubliez pas d'importer Numpy et Matplotlib au début de votre programme !**
 
 ## Définition des électrons
 
@@ -52,6 +66,12 @@ Avec ce jeu de règles simples, on peut simuler différent types de composants d
 ### Un composant
 
 ### Les différents types de composants
+
+![Composant câble](img/TP3_component_cable.png)
+
+![Composant horloge](img/TP3_component_clock.png)
+
+![Composant porte logique XOR](img/TP3_component_XOR.png)
 
 ### Un conteneur de composants (circuit)
 
@@ -96,7 +116,9 @@ class 2D_cellular_automaton():
 
 ### Un automate cellulaire Wire-world
 
-## Affichage de la simulation
+## Instanciation et simulation
+
+![Circuit à programmer](img/TP3_example_circuit.png)
 
 ![Simulation TP3](img/TP3_example.gif)
 
