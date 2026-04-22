@@ -59,21 +59,123 @@ Ces classes feront appel à des **méthodes spéciales** Python.
 
 ### Un électron
 
+~~~
+class electron():
+    
+    #Complétez ici
+~~~
+
 ### Un conteneur d'électrons (charges)
+
+~~~
+class charges():
+    
+    def __init__(self):
+        #Complétez ici
+        
+    def __len__(self):
+        #Complétez ici
+        
+    def __getitem__(self,i):
+        #Complétez ici
+        
+    def __setitem__(self,i,elec):
+        #Complétez ici
+        
+    def __iter__(self):
+        self.index = -1
+        return self
+        
+    def __next__(self):
+        self.index += 1
+        if self.index < len(self):
+            return self[self.index]
+        else:
+            raise StopIteration
+        
+    def __add__(self,elec):
+        #Complétez ici 
+        
+    def __sub__(self,elec):
+        #Complétez ici  
+~~~
 
 ## Définition des composants
 
 ### Un composant
 
+~~~
+class component():
+        
+    #Complétez ici
+~~~
+
 ### Les différents types de composants
+
+#### Le câble
 
 ![Composant câble](img/TP3_component_cable.png)
 
+~~~
+class wire(component):
+        
+    #Complétez ici
+~~~
+
+#### L'horloge
+
 ![Composant horloge](img/TP3_component_clock.png)
+
+~~~
+class clock(component):
+    
+    #Complétez ici
+~~~
+
+#### La porte logique XOR
 
 ![Composant porte logique XOR](img/TP3_component_XOR.png)
 
+~~~
+class xor(component):
+    
+    #Complétez ici
+~~~
+
 ### Un conteneur de composants (circuit)
+
+~~~
+class circuit():
+    
+    def __init__(self):
+        #Complétez ici
+        
+    def __len__(self):
+        #Complétez ici
+        
+    def __getitem__(self,i):
+        #Complétez ici
+        
+    def __setitem__(self,i,compo):
+        #Complétez ici
+        
+    def __iter__(self):
+        self.index = -1
+        return self
+        
+    def __next__(self):
+        self.index += 1
+        if self.index < len(self):
+            return self[self.index]
+        else:
+            raise StopIteration
+        
+    def __add__(self,compo):
+        #Complétez ici
+        
+    def __sub__(self,compo):
+        #Complétez ici  
+~~~
 
 ## Définition de l'automate cellulaire
 
