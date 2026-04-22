@@ -189,7 +189,7 @@ Si vous affichez la matrice 2D obtenue sous la forme d'une image, vous devriez o
 ![Simulation TP préparation](img/TP_preparation_example.png)
 
 L'automate cellulaire élémentaire de règle n°110 est connu pour son comportement complexe, ni complètement chaotique, ni complètement ordonné, où des motifs semblent se déplacer et s'entrechoquer.
-Pour cette raison, il est souvent considéré comme le plus intéressant des automates cellulaires.
+Pour cette raison, il est souvent considéré comme le plus intéressant des automates cellulaires élémentaires.
 
 Mais vous pouvez essayer d'autres règles ! Par exemple, les règles 30 et 90 donnent aussi des motifs amusants. 
 
