@@ -60,11 +60,11 @@ Ces classes feront appel à des **méthodes spéciales** Python.
 Nous allons commencer par programmer les classes qui nous permettrons d'initialiser l'automate avec des **électrons**.
 
 Pour ce faire, il faut définir à Python ce qu'est un "électron" (ses attributs et ses méthodes), puis définir un conteneur d'électron.
-C'est un conteneur d'électrons qui sera fourni à l'initialisation de Wire-world.
+Un conteneur d'électrons sera fourni à l'initialisation de Wire-world.
 
 ### Un électron
 
-Tout d'abord, définissons ce qu'est un **électron** pour Wire-world : il s'agit d'un objet qui a une tête et une queue, positionné sur la grille de l'automate à des coordonnées fournies par l'utilisateur.
+Tout d'abord, définissons ce qu'est un **électron** pour Wire-world : il s'agit d'un objet qui a une **tête** et une **queue**, positionné sur la grille de l'automate à des coordonnées fournies par l'utilisateur.
 
 Voici la structure de la classe `electron` que nous allons programmer :
 
@@ -170,7 +170,18 @@ _Comment feriez-vous pour ajouter un électron de tête et queue de positions (0
 
 ## Définition des composants
 
+Nous allons à présent programmer les classes qui nous permettrons d'initialiser l'automate avec un circuit de  **composants**.
+
+Pour ce faire, il faut définir à Python ce qu'est un "composant" (ses attributs et ses méthodes), puis définir un conteneur de composants (un circuit).
+Un conteneur de composant sera fourni à l'initialisation de Wire-world.
+
 ### Un composant
+
+Définissons maintenant ce qu'est un **composant** pour Wire-world : il s'agit d'un objet qui contient la position des cases "**conductrices**" d'une partie de la grille de l'automate, imitant le comportement d'un composant électronique réel.
+
+Nous allons d'abord définir ce qu'est un composant de manière générale dans une classe-mère, de laquelle hériterons tous les composants.
+
+Voici la structure de la classe mère `component` que nous allons programmer :
 
 ~~~
 class component():
@@ -184,6 +195,12 @@ class component():
     def position_shift(self,shift_x,shift_y):
         #Complétez ici
 ~~~
+
+#### Constructeur
+
+#### Getter
+
+#### Positionnement
 
 ### Les différents types de composants
 
@@ -258,6 +275,8 @@ class circuit():
     def __sub__(self,compo):
         #Complétez ici  
 ~~~
+
+
 
 ## Définition de l'automate cellulaire
 
