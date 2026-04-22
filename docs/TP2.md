@@ -72,6 +72,8 @@ Pour la fourmi de Langton, on parlera de règle '**1R0/0L0/1R1/0L1**'.
 
 _Vérifions si vous avez bien compris. Quelles règles suivra l'automate '1L1/1L1/1R1/0N0' ? Pour vous aider, écrivez le tableau correspondant._
 
+![Règles du turmite Fibonacci](img/TP2_iteration.gif)
+
 Lors de ce TP, nous allons programmer un automate cellulaire de type "turmite", sous la forme de 2 classes Python : une **classe mère** commune à tous les automates cellulaires 2D, et une **classe fille** propre aux automates "turmites", qui **héritera** de la classe mère.
 
 **N'oubliez pas d'importer Numpy et Matplotlib au début de votre programme !**
