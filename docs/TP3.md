@@ -290,7 +290,7 @@ Ce composant permettra de simuler le comportement d'une porte logique XOR dans l
 
 * Si 2 électrons arrivent en même temps sur chacune de ses entrées, aucun électron ne sera transmis à sa sortie.
 
-C'est le comportement de ce composant que nous allons simuler en fin de TP.
+C'est le comportement de ce composant en particulier que nous allons simuler en fin de TP.
 
 Complétez alors la classe `xor` suivante : 
 
@@ -312,6 +312,11 @@ On considèrera que (`pos_x`,`pos_y`) sont les coordonnées de la case la plus e
 Pour placer la porte logique XOR à la bonne position, on initialisera sa position avec l'attribut de classe `blueprint`, puis on la déplacera avec la méthode `position_shift`.
 
 ### Un conteneur de composants (circuit)
+
+Nous allons à présent définir un **conteneur** de composants, que nous allons appeler "circuit".
+L'idée sera de pouvoir facilement **itérer** sur les composants fournis à l'initialisation de l'automate.
+
+Voici la structure de la classe `circuit` que nous allons programmer :
 
 ~~~
 class circuit():
@@ -346,11 +351,21 @@ class circuit():
         #Complétez ici  
 ~~~
 
-
+Complétez les différentes méthodes de ce conteneur`circuit`, en vous inspirant du conteneur `charges` que vous avez programmé précédemment.
 
 ## Définition de l'automate cellulaire
 
+De la même manière que pour le TP précédent, nous allons programmer l'automate cellulaire "Wire-world" à proprement parler sous la forme de 2 classes :
+
+* Une **classe mère** `2D_cellular_automaton` qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D.
+
+* Une **classe fille** `wire_world` qui contiendra les attributs et méthodes spécifiques aux automates "Wire-world".
+
 ### Un automate cellulaire 2D
+
+Commençons par la classe mère `2D_cellular_automaton`.
+
+Elle est similaire à la classe du même nom programmée lors du TP précédent :
 
 ~~~
 class 2D_cellular_automaton():
@@ -387,7 +402,19 @@ class 2D_cellular_automaton():
         plt.close()
 ~~~
 
+Comme nous l'avions expliqué lors du TP précdent, avoir définit dans une classe mère un automate cellulaire 2D de manière générale nous permet de ne pas avoir à redéfinir les attributs et méthodes de base à chaque nouvel automate que nous programmons.
+
+Vous pouvez donc reprendre cette classe telle quelle.
+
+_Question pour voir si vous avez compris : pourquoi la fonction `iterate_grid` ne fait que renvoyer un message d'erreur ?_
+
 ### Un automate cellulaire Wire-world
+
+Passons à la définition de la classe fille `wire_world`.
+
+L'idée sera que l'utilisateur puisse initialiser la grille de l'automate avec un **conteneur d'électrons** et un **conteneur de composants**, puis le faire tourner pour un nombre défini d'itérations.
+
+Voici donc la structure de la classe `wire_world` que nous allons programmer :
 
 ~~~
 class wire_world(2D_cellular_automaton):
@@ -409,10 +436,78 @@ class wire_world(2D_cellular_automaton):
         #Complétez ici
 ~~~
 
+#### Constructeur
+
+Complétez le **constructeur**.
+
+Il prendra en entrée 2 entiers :
+
+* `grid_size_x` et `grid_size_y` correspondant aux dimensions de la grile de l'automate
+
+* Un conteneur de composants `circuit` et un conteneur d'électrons `charges` permettant à l'utilisateur d'initialiser l'automate à sa convenance.
+
+Il initialisera d'abord une grille vide en se servant du constructeur de la classe mère.
+Ensuite, il appellera les méthodes privées `__print_circuit` et `__charge_circuit`, avec pour entrées `circuit` et `charges`.
+Ces méthodes, que nous allons programmer dans la suite, permettront d'ajouter les composants et les électrons aux positions désirées sur la grille de l'automate.
+
+#### Méthodes privées
+
+Complétez ensuite les **méthodes privées** `__print_circuit` et `__charge_circuit`.
+
+Comme nous l'avons expliqué plus tôt, ces méthodes permettront de placer des composants et des électrons sur la grille de l'automate à son initialisation.
+
+Ces méthodes fonctionneront de la manière suivante :
+
+* `__print_circuit` prendra en entrée un conteneur de composants, et mettra à 1 les cases de la grille de l'automate correspondant aux coordonnées des différents composants du conteneur.
+
+* `__charge_circuit` prendra en entrée un conteneur d'électrons, et mettra à 2 ou 3 les case de la grille de l'automae correspondant aux coordonnées de la queue et de la tête des différents électrons du conteneur.
+
+Grâce aux **méthodes spéciales** programmées précémment pour chaque type de conteneur, vous pourrez facilement en parcourir les éléments. 
+
+_D'après vous, pourquoi est-il préférable que les méthodes `__print_circuit` et `__charge_circuit` soient privées ?_
+
+#### Getter
+
+Complétez maintenant le "**getter**" `get_neighbors`.
+
+Il retournera une matrice de même dimensions que la grille de l'automate, contenant le nombre de voisins (voisinage de Moore) égaux à 3 pour chaque case égale à 1, et 0 partout ailleurs.
+
+#### Itération de l'automate
+
+Enfin, nous allons programmer la méthode qui permettra de d'itérer un automate "Wire-world" un nombre donné de fois. 
+L'idée sera d'appeler dans cette méthode d'autres méthodes programmées précédemment.
+
+Complétez donc la méthode `iterate_grid`.
+
+Pour le nombre entier d'itérations `nb_iterations` donné en entrée, elle appliquera les règles de "Wire-world" à la grille de l'automate.
+Pour chaque itération, on incrémentera de 1 l'attribut d'instance `iteration`.
+
 ## Instanciation et simulation
+
+Ça y est, votre automate cellulaire "Wire-world" est prêt à tourner !
+
+Reste à définir un circuit, et à y positionner des électrons.
+
+Voici le circuit que nous nous proposons de simuler :
 
 ![Circuit à programmer](img/TP3_example_circuit.png)
 
+Créez une instance de conteneur `circuit`, et ajoutez-y les composants nécessaires à créer ce circuit.
+
+Ensuite, créez 2 instances de `charges`, et ajoutez-y les électrons nécessaires pour tester les 2 initialisations suivantes de l'automate :
+
+![Initialisations de l'automate à essayer](img/TP3_example_initialization.png)
+
+Créez 2 instances d'automates cellulaires "Wire-world", permettant de tester les 2 initialisations, pour 50 itérations chacune.
+Enregistrez une image PNG de la grille de l'automate à chaque itération.
+
+Si vous regardez les images PNG obtenues, vous devriez voir un comportement similaire à celui-ci :
+
 ![Simulation TP3](img/TP3_example.gif)
 
+_Ceci est-il bien le comportement attendu pour une porte logique XOR ?_
+
 ---
+
+Bravo ! Vous avez découvert l'utilité des **méthodes spéciales** Python pour définir un conteneur.
+Pour préparer le TP examen, n'hésitez pas à re-faire les TP chez vous, et à vous entrainer sur les sujets d'examen des années précédentes.
