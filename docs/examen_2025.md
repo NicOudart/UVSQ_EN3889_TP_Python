@@ -1,6 +1,6 @@
 # TP examen : sujet de 2025
 
-![En-tête TP exam](img/Header_TP_exam.png)
+![En-tête TP exam](img/Header_TP_exam_2025.png)
 
 _Lors de cet examen, nous allons programmer un automate cellulaire 2D de type "Brian's brain" en paradigme orienté objet._
 
@@ -30,7 +30,7 @@ Chaque case de la grille d'un automate "Brian's brain" peut prendre **3 états**
 * Si une case a la valeur 0, et qu'elle a 2 voisins à la valeur 2, elle prendra la valeur 2 à l'itération suivante.
 Sinon, elle restera à la valeur 0.
 
-
+![Règles de Brian's brain](img/TP_exam_2025_iteration.gif)
 
 **N'oubliez pas d'importer Numpy et Matplotlib au début de votre programme !**
 
