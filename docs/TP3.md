@@ -41,7 +41,7 @@ Sinon, elle reste à 1.
 
 ![Règles de Wire-world](img/TP3_iteration.gif)
 
-Avec ce jeu de règles simples, on peut simuler différent types de composants de la vie réelle : des câbles électriques, des diodes, des horloges, des portes logiques, et même des transistors.
+Avec ce jeu de règles simples, on peut simuler différents types de composants de la vie réelle : des câbles électriques, des diodes, des horloges, des portes logiques, et même des transistors.
 
 Lors de ce TP, nous allons programmer un automate cellulaire "Wire-world", sous la forme de plusieurs classes Python :
 
