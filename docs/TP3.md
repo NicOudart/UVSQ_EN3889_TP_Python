@@ -198,15 +198,45 @@ class component():
 
 #### Constructeur
 
+Complétez le **constructeur**.
+Il prendra en entrée une liste de tuples `wire_pixels`, chaque tuple contenant les coordonnées sur la grille d'une case conductrice du composant.
+Il initialisera l'attribut d'instance `wire_pixels` avec cette entrée.
+
 #### Getter
+
+Complétez la méthode `get_wire_pixels`.
+Il s'agira d'un "**getter**", permettant de récupérer l'attribut d'instance `wire_pixels`.
 
 #### Positionnement
 
+Complétez la méthode `position_shift`.
+Elle prendra en entrée 2 entiers `shift_x` et `shift_y`, et appliquera à toutes coordonnées de l'attribut d'instance `wire_pixels` un décalage de `shift_x` cases en horizontal, et de `shift_y` cases en vertical.
+
+L'idée est que cette méthode nous permettra de **placer un composant à la position désirée** sur la grille de l'automate, afin de former notre circuit.
+
+Les méthodes filles de `component` définiront les coordonnées des cases conductrices du composant, en concidérant la case en haut à gauche comme étant à la coordonnée (0,0).
+Puis, elles utiliseront la méthode `position_shift` pour placer une instance du composant à la position désirée par l'utilisateur.
+
 ### Les différents types de composants
+
+Maintenant que nous avons définit ce qu'était un composant de manière générale dans une classe mère `component`, nous allons définir différents **types de composants** dans des classes filles.
+
+Nous n'en définirons ici que 3 : le **câble**, l'**horloge** et la **porte logique XOR**.
+
+Mais il en existe bien d'autres dans Wire-world !
+Pour le définir, il nous suffirait d'ajouter d'autres classes filles de `component`.
 
 #### Le câble
 
+Commençons par définir le **câble**.
+
+Comme son nom l'indique, il s'agira simplement d'une ligne horizontale de cases conductrices, d'une longueur donnée :
+
 ![Composant câble](img/TP3_component_cable.png)
+
+On se servira de ce composant pour relier d'autres composants entre eux, à la manière d'un fil électrique dans le monde réel.
+
+Complétez alors la classe `wire` suivante :
 
 ~~~
 class wire(component):
@@ -215,22 +245,54 @@ class wire(component):
         #Complétez ici
 ~~~
 
+Son **constructeur** prendra en entrée 3 entiers `pos_x`, `pos_y` et `length`, contenant respectivement la position horizontale, la position verticale et la longueur du câble à initialiser.
+On considèrera que (`pos_x`,`pos_y`) sont les coordonnées de la case la plus à gauche du câble.
+
+Pour placer le câble à la bonne position, on pourra définir ses coordonnées relativement à (0,0), puis le déplacer avec la méthode `position_shift`.
+
 #### L'horloge
+
+Définissons à présent l'**horloge**.
+
+Il s'agit d'un "générateur" émettant des électrons à intervalles d'itérations réguliers.
+
+La longueur de la partie centrale de l'horloge peut varier : plus elle est longue, plus grand sera le nombre d'itérations entre 2 émissions d'électrons.
 
 ![Composant horloge](img/TP3_component_clock.png)
 
+On se servira donc de ce composant pour injecter périodiquement des électrons dans notre circuit, à la manière d'une horloge dans le monde réel.
+
+Complétez alors la classe `clock` suivante :
+
 ~~~
 class clock(component):
-    
-    blueprint = #Complétez ici
-    
+        
     def __init__(self,pos_x,pos_y,length):
         #Complétez ici
 ~~~
 
+Son **constructeur** prendra en entrée 3 entiers `pos_x`, `pos_y` et `length`, contenant respectivement la position horizontale, la position verticale et la longueur de l'horloge à initialiser.
+On considèrera que (`pos_x`,`pos_y`) sont les coordonnées de la case la plus en haut à gauche de l'horloge.
+
+Pour placer l'horloge à la bonne position, on pourra définir ses coordonnées relativement à (0,0), puis la déplacer avec la méthode `position_shift`.
+
 #### La porte logique XOR
 
+Enfin, définissons la **porte logique XOR** ("ou exclusif" en français).
+
+Voici la structure d'une porte logique XOR dans Wire-world :
+
 ![Composant porte logique XOR](img/TP3_component_XOR.png)
+
+Ce composant permettra de simuler le comportement d'une porte logique XOR dans la vie réelle :
+
+* Si un seul électron arrive sur une de ses entrées, il sera transmis à sa sortie.
+
+* Si 2 électrons arrivent en même temps sur chacune de ses entrées, aucun électron ne sera transmis à sa sortie.
+
+C'est le comportement de ce composant que nous allons simuler en fin de TP.
+
+Complétez alors la classe `xor` suivante : 
 
 ~~~
 class xor(component):
@@ -240,6 +302,14 @@ class xor(component):
     def __init__(self,pos_x,pos_y):
         #Complétez ici
 ~~~
+
+Un attribut de classe `blueprint` contiendra une liste de tuples, chaque tuple contenant les coordonnées d'une case conductrice du composant, en considérant la case la plus en haut à gauche du composant comme étant à (0,0).
+On utilise ici un attribut de classe, car la forme d'une porte logique XOR n'est pas propre à une instance, mais à la classe elle-même.
+
+Son **constructeur** prendra en entrée 2 entiers `pos_x` et `pos_y`, contenant respectivement la position horizontale et la position verticale de la porte logique XOR à initialiser.
+On considèrera que (`pos_x`,`pos_y`) sont les coordonnées de la case la plus en haut à gauche du composant.
+
+Pour placer la porte logique XOR à la bonne position, on initialisera sa position avec l'attribut de classe `blueprint`, puis on la déplacera avec la méthode `position_shift`.
 
 ### Un conteneur de composants (circuit)
 
