@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Nicolas OUDART" /><link rel="canonical" href="https://nicoudart.github.io/UVSQ_EN3889_TP_Python/TP3/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>TP3 - UVSQ_EN3889_TP_Python</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "TP3";
+        var mkdocs_page_input_path = "TP3.md";
+        var mkdocs_page_url = "/UVSQ_EN3889_TP_Python/TP3/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> UVSQ_EN3889_TP_Python
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Preparation/">Préparation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TP1/">TP1</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TP2/">TP2</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">TP3</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#wire-world">Wire-world</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#definition-des-electrons">Définition des électrons</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#un-electron">Un électron</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructeur">Constructeur</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#getters">Getters</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#un-conteneur-delectrons-charges">Un conteneur d'électrons (charges)</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructeur_1">Constructeur</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methode-speciale-len">Méthode spéciale len</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methodes-speciales-getitem-et-setitem">Méthodes spéciales getitem et setitem</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methodes-speciales-iter-et-next">Méthodes spéciales iter et next</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methodes-speciales-add-et-sub">Méthodes spéciales add et sub</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#definition-des-composants">Définition des composants</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#un-composant">Un composant</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructeur_2">Constructeur</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#getter">Getter</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#positionnement">Positionnement</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#les-differents-types-de-composants">Les différents types de composants</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#le-cable">Le câble</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#lhorloge">L'horloge</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#la-porte-logique-xor">La porte logique XOR</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#un-conteneur-de-composants-circuit">Un conteneur de composants (circuit)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#definition-de-lautomate-cellulaire">Définition de l'automate cellulaire</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#un-automate-cellulaire-2d">Un automate cellulaire 2D</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#un-automate-cellulaire-wire-world">Un automate cellulaire Wire-world</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#constructeur_3">Constructeur</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#methodes-privees">Méthodes privées</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#getter_1">Getter</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#iteration-de-lautomate">Itération de l'automate</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#instanciation-et-simulation">Instanciation et simulation</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../examen_2025/">Examen 2025</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">UVSQ_EN3889_TP_Python</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">TP3</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="tp-3-les-methodes-speciales">TP 3 : Les méthodes spéciales</h1>
+<p><img alt="En-tête TP3" src="../img/Header_TP3.png" /></p>
+<p><em>Lors de ce TP, nous allons programmer un automate cellulaire 2D de type "Wire-world", en complétant différentes classes, ayant différentes intéractions : électrons, charges, composants, circuit, automate, etc.</em>
+<em>Ces différentes classes feront appel à un concept très utile : les méthodes spéciales Python.</em></p>
+<hr />
+<h2 id="wire-world">Wire-world</h2>
+<p>Ce TP portera à nouveau sur un type particulier d'automate cellulaire 2D : <strong>Wire-world</strong>.</p>
+<p>Imaginé en 1987 par l'informaticien Canadien Brian Silverman, "Wire-world" est à l'origine conçu comme un jeu éducatif.
+Comme son nom l'indique, le but est de simuler un <strong>circuit électronique</strong>, avec des câbles, des composants, et des électrons se déplaçant sur le circuit.</p>
+<p>Contrairement aux automates que nous avons programmés précédemment, dont la grille ne pouvait contenir que les valeurs 0 ou 1, la grille de "Wire-world" peut contenir les valeurs 0, 1, 2 ou 3.
+Si une case est à la valeur :</p>
+<ul>
+<li>
+<p>0 on la considère comme "<strong>vide</strong>" ou "<strong>isolante</strong>".</p>
+</li>
+<li>
+<p>1 on la considère comme un "<strong>conducteur</strong>".</p>
+</li>
+<li>
+<p>2 on la considère comme la "<strong>queue d'un électron</strong>".</p>
+</li>
+<li>
+<p>3 on la considère comme la "<strong>tête d'un électron</strong>".</p>
+</li>
+</ul>
+<p>On initialise un circuit en positionnant des 0 et des 1 sur la grille.
+Ensuite, on ajoute un ou plusieurs électrons quelque part sur du conducteur, avec un 2 et un 3 collés l'un à l'autre.</p>
+<p>Les cases de la grille changent ou non de valeur à chaque itération, suivant les règles suivantes :</p>
+<ul>
+<li>
+<p>Si une case est à 0, elle restera toujours à 0.</p>
+</li>
+<li>
+<p>Si une case est à 3, elle passe à 2 à l'itération suivante.</p>
+</li>
+<li>
+<p>Si une case est à 2, elle passe à 1 à l'itération suivante.</p>
+</li>
+<li>
+<p>Si une case est à 1, si 1 ou 2 de ses voisins (voisinage de Moore) est à la valeur 3, alors elle passe à 3 à l'itération suivante.
+Sinon, elle reste à 1.</p>
+</li>
+</ul>
+<p><img alt="Règles de Wire-world" src="../img/TP3_iteration.gif" /></p>
+<p>Avec ce jeu de règles simples, on peut simuler différents types de composants de la vie réelle : des câbles électriques, des diodes, des horloges, des portes logiques, et même des transistors.</p>
+<p>Lors de ce TP, nous allons programmer un automate cellulaire "Wire-world", sous la forme de plusieurs classes Python :</p>
+<ul>
+<li>
+<p>Des <strong>classes</strong> pour un électron et un <strong>conteneur</strong> d'életrons (que l'on appelera "charges").</p>
+</li>
+<li>
+<p>Des <strong>classes</strong> pour les composants, et un <strong>conteneur</strong> de composants (que l'on appelera "circuit").</p>
+</li>
+<li>
+<p>Une <strong>classe mère</strong> pour un automate cellulaire 2D de manière générale, et une <strong>classe fille</strong> pour un automate "Wire-world" en particulier.</p>
+</li>
+</ul>
+<p>Ces classes feront appel à des <strong>méthodes spéciales</strong> Python.</p>
+<p><strong>N'oubliez pas d'importer Numpy et Matplotlib au début de votre programme !</strong></p>
+<h2 id="definition-des-electrons">Définition des électrons</h2>
+<p>Nous allons commencer par programmer les classes qui nous permettrons d'initialiser l'automate avec des <strong>électrons</strong>.</p>
+<p>Pour ce faire, il faut définir à Python ce qu'est un "électron" (ses attributs et ses méthodes), puis définir un conteneur d'électron.
+Un conteneur d'électrons sera fourni à l'initialisation de Wire-world.</p>
+<h3 id="un-electron">Un électron</h3>
+<p>Tout d'abord, définissons ce qu'est un <strong>électron</strong> pour Wire-world : il s'agit d'un objet qui a une <strong>tête</strong> et une <strong>queue</strong>, positionné sur la grille de l'automate à des coordonnées fournies par l'utilisateur.</p>
+<p>Voici la structure de la classe <code>electron</code> que nous allons programmer :</p>
+<pre><code>class electron():
+
+    def __init__(self,head_position,tail_position):
+
+        #Complétez ici
+
+    def get_head(self):
+
+        #Complétez ici
+
+    def get_tail(self):
+
+        #Complétez ici
+</code></pre>
+<h4 id="constructeur">Constructeur</h4>
+<p>Complétez le <strong>constructeur</strong>.
+Il prendra en entrée 2 tuples <code>head_position</code> et <code>tail_position</code>, contenant respectivement les coordonnées de la tête et de la queue de l'électron sur la grile.
+Il initialisera les attributs d'instance <code>head</code> et <code>tail</code> avec ces entrées.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Nota Bene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">En toute rigueur, il faudrait que le constructeur vérifie que la tête et de la queue de l'électron sont bien collées.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="getters">Getters</h4>
+<p>Complétez ensuite les méthodes <code>get_head</code> et <code>get_tail</code>.
+Il s'agira de "<strong>getters</strong>" permettant de récupérer les attributs d'instance <code>head</code> et <code>tail</code> de l'électron.</p>
+<h3 id="un-conteneur-delectrons-charges">Un conteneur d'électrons (charges)</h3>
+<p>Maintenant, nous allons définir un <strong>conteneur</strong> d'électrons, que nous allons appeler "charges".
+L'idée sera de pouvoir facilement <strong>itérer</strong> sur les électrons fournis à l'initialisation de l'automate.</p>
+<p>Voici la structure de la classe <code>charges</code> que nous allons programmer :</p>
+<pre><code>class charges():
+
+    def __init__(self):
+
+        #Complétez ici
+
+    def __len__(self):
+
+        #Complétez ici
+
+    def __getitem__(self,i):
+
+        #Complétez ici
+
+    def __setitem__(self,i,elec):
+
+        #Complétez ici
+
+    def __iter__(self):
+
+        self.index = -1
+
+        return self
+
+    def __next__(self):
+
+        self.index += 1
+
+        if self.index &lt; len(self):
+            return self[self.index]
+        else:
+            raise StopIteration
+
+    def __add__(self,elec):
+
+        #Complétez ici 
+
+    def __sub__(self,elec):
+
+        #Complétez ici  
+</code></pre>
+<h4 id="constructeur_1">Constructeur</h4>
+<p>Complétez le <strong>constructeur</strong>.
+Il initialisera un attribut d'instance <code>electrons</code> avec une liste vide.
+C'est cette liste qui contiendra les électrons du conteneur.</p>
+<h4 id="methode-speciale-len">Méthode spéciale len</h4>
+<p>Complétez la méthode spéciale <code>__len__</code>, qui devra retourner le nombre d'électrons dans le conteneur.</p>
+<p><em>Comment feriez-vous alors pour récupérer le nombre d'électron d'une instance <code>cha</code> de la classe <code>charges</code> ?</em></p>
+<h4 id="methodes-speciales-getitem-et-setitem">Méthodes spéciales getitem et setitem</h4>
+<p>Complétez les méthodes spéciales <code>__getitem__</code> et <code>__setitem__</code>, qui permettront de respectivement de récupérer l'électron à l'indice <code>i</code>, et d'assigner à l'indice <code>i</code> un électron <code>elec</code>.</p>
+<p><em>Comment feriez-vous alors pour récupérer un électron de l'instance <code>cha</code> de <code>charges</code> à l'indice 3 ?</em>
+<em>Et comment feriez-vous pour assigner à l'indice 6 de <code>cha</code> une instance d'électron <code>ele</code> ?</em></p>
+<h4 id="methodes-speciales-iter-et-next">Méthodes spéciales iter et next</h4>
+<p>Les méthodes <code>__iter__</code> et <code>__next__</code> sont déjà complétées.
+Elles permettront d'itérer sur les électrons contenus dans une instance de <code>charges</code>.</p>
+<p>Par exemple, pour une instance <code>cha</code> de <code>charges</code>, on pourra écrire : <code>for ele in cha</code>.</p>
+<h4 id="methodes-speciales-add-et-sub">Méthodes spéciales add et sub</h4>
+<p>Complétez les méthodes <code>__add__</code> et <code>__sub__</code>, qui permettront respectivement d'ajouter et de retirer des électrons au conteneur, à l'aide des opérateurs <code>+</code> et <code>-</code>.</p>
+<p><em>Comment feriez-vous pour ajouter un électron de tête et queue de positions (0,1) et (0,0) à une instance <code>cha</code> de <code>charge</code>, en utilisant l'opérateur <code>+</code> ?</em></p>
+<h2 id="definition-des-composants">Définition des composants</h2>
+<p>Nous allons à présent programmer les classes qui nous permettrons d'initialiser l'automate avec un circuit de  <strong>composants</strong>.</p>
+<p>Pour ce faire, il faut définir à Python ce qu'est un "composant" (ses attributs et ses méthodes), puis définir un conteneur de composants (un circuit).
+Un conteneur de composant sera fourni à l'initialisation de Wire-world.</p>
+<h3 id="un-composant">Un composant</h3>
+<p>Définissons maintenant ce qu'est un <strong>composant</strong> pour Wire-world : il s'agit d'un objet qui contient la position des cases "<strong>conductrices</strong>" d'une partie de la grille de l'automate, imitant le comportement d'un composant électronique réel.</p>
+<p>Nous allons d'abord définir ce qu'est un composant de manière générale dans une classe-mère, de laquelle hériterons tous les composants.</p>
+<p>Voici la structure de la classe mère <code>component</code> que nous allons programmer :</p>
+<pre><code>class component():
+
+    def __init__(self,wire_pixels):
+
+        #Complétez ici
+
+    def get_wire_pixels(self):
+
+        #Complétez ici
+
+    def position_shift(self,shift_x,shift_y):
+
+        #Complétez ici
+</code></pre>
+<h4 id="constructeur_2">Constructeur</h4>
+<p>Complétez le <strong>constructeur</strong>.
+Il prendra en entrée une liste de tuples <code>wire_pixels</code>, chaque tuple contenant les coordonnées sur la grille d'une case conductrice du composant.
+Il initialisera l'attribut d'instance <code>wire_pixels</code> avec cette entrée.</p>
+<h4 id="getter">Getter</h4>
+<p>Complétez la méthode <code>get_wire_pixels</code>.
+Il s'agira d'un "<strong>getter</strong>", permettant de récupérer l'attribut d'instance <code>wire_pixels</code>.</p>
+<h4 id="positionnement">Positionnement</h4>
+<p>Complétez la méthode <code>position_shift</code>.
+Elle prendra en entrée 2 entiers <code>shift_x</code> et <code>shift_y</code>, et appliquera à toutes coordonnées de l'attribut d'instance <code>wire_pixels</code> un décalage de <code>shift_x</code> cases en horizontal, et de <code>shift_y</code> cases en vertical.</p>
+<p>L'idée est que cette méthode nous permettra de <strong>placer un composant à la position désirée</strong> sur la grille de l'automate, afin de former notre circuit.</p>
+<p>Les méthodes filles de <code>component</code> définiront les coordonnées des cases conductrices du composant, en concidérant la case en haut à gauche comme étant à la coordonnée (0,0).
+Puis, elles utiliseront la méthode <code>position_shift</code> pour placer une instance du composant à la position désirée par l'utilisateur.</p>
+<h3 id="les-differents-types-de-composants">Les différents types de composants</h3>
+<p>Maintenant que nous avons définit ce qu'était un composant de manière générale dans une classe mère <code>component</code>, nous allons définir différents <strong>types de composants</strong> dans des classes filles.</p>
+<p>Nous n'en définirons ici que 3 : le <strong>câble</strong>, l'<strong>horloge</strong> et la <strong>porte logique XOR</strong>.</p>
+<p>Mais il en existe bien d'autres dans Wire-world !
+Pour le définir, il nous suffirait d'ajouter d'autres classes filles de <code>component</code>.</p>
+<h4 id="le-cable">Le câble</h4>
+<p>Commençons par définir le <strong>câble</strong>.</p>
+<p>Comme son nom l'indique, il s'agira simplement d'une ligne horizontale de cases conductrices, d'une longueur donnée :</p>
+<p><img alt="Composant câble" src="../img/TP3_component_cable.png" /></p>
+<p>On se servira de ce composant pour relier d'autres composants entre eux, à la manière d'un fil électrique dans le monde réel.</p>
+<p>Complétez alors la classe <code>wire</code> suivante :</p>
+<pre><code>class wire(component):
+
+    def __init__(self,pos_x,pos_y,length):
+
+        #Complétez ici
+</code></pre>
+<p>Son <strong>constructeur</strong> prendra en entrée 3 entiers <code>pos_x</code>, <code>pos_y</code> et <code>length</code>, contenant respectivement la position horizontale, la position verticale et la longueur du câble à initialiser.
+On considèrera que (<code>pos_x</code>,<code>pos_y</code>) sont les coordonnées de la case la plus à gauche du câble.</p>
+<p>Pour placer le câble à la bonne position, on pourra définir ses coordonnées relativement à (0,0), puis le déplacer avec la méthode <code>position_shift</code>.</p>
+<h4 id="lhorloge">L'horloge</h4>
+<p>Définissons à présent l'<strong>horloge</strong>.</p>
+<p>Il s'agit d'un "générateur" émettant des électrons à intervalles d'itérations réguliers.</p>
+<p>La longueur de la partie centrale de l'horloge peut varier : plus elle est longue, plus grand sera le nombre d'itérations entre 2 émissions d'électrons.</p>
+<p><img alt="Composant horloge" src="../img/TP3_component_clock.png" /></p>
+<p>On se servira donc de ce composant pour injecter périodiquement des électrons dans notre circuit, à la manière d'une horloge dans le monde réel.</p>
+<p>Complétez alors la classe <code>clock</code> suivante :</p>
+<pre><code>class clock(component):
+
+    def __init__(self,pos_x,pos_y,length):
+
+        #Complétez ici
+</code></pre>
+<p>Son <strong>constructeur</strong> prendra en entrée 3 entiers <code>pos_x</code>, <code>pos_y</code> et <code>length</code>, contenant respectivement la position horizontale, la position verticale et la longueur de l'horloge à initialiser.
+On considèrera que (<code>pos_x</code>,<code>pos_y</code>) sont les coordonnées de la case la plus en haut à gauche de l'horloge.</p>
+<p>Pour placer l'horloge à la bonne position, on pourra définir ses coordonnées relativement à (0,0), puis la déplacer avec la méthode <code>position_shift</code>.</p>
+<h4 id="la-porte-logique-xor">La porte logique XOR</h4>
+<p>Enfin, définissons la <strong>porte logique XOR</strong> ("ou exclusif" en français).</p>
+<p>Voici la structure d'une porte logique XOR dans Wire-world :</p>
+<p><img alt="Composant porte logique XOR" src="../img/TP3_component_XOR.png" /></p>
+<p>Ce composant permettra de simuler le comportement d'une porte logique XOR dans la vie réelle :</p>
+<ul>
+<li>
+<p>Si un seul électron arrive sur une de ses entrées, il sera transmis à sa sortie.</p>
+</li>
+<li>
+<p>Si 2 électrons arrivent en même temps sur chacune de ses entrées, aucun électron ne sera transmis à sa sortie.</p>
+</li>
+</ul>
+<p>C'est le comportement de ce composant en particulier que nous allons simuler en fin de TP.</p>
+<p>Complétez alors la classe <code>xor</code> suivante : </p>
+<pre><code>class xor(component):
+
+    blueprint = #Complétez ici
+
+    def __init__(self,pos_x,pos_y):
+
+        #Complétez ici
+</code></pre>
+<p>Un attribut de classe <code>blueprint</code> contiendra une liste de tuples, chaque tuple contenant les coordonnées d'une case conductrice du composant, en considérant la case la plus en haut à gauche du composant comme étant à (0,0).
+On utilise ici un attribut de classe, car la forme d'une porte logique XOR n'est pas propre à une instance, mais à la classe elle-même.</p>
+<p>Son <strong>constructeur</strong> prendra en entrée 2 entiers <code>pos_x</code> et <code>pos_y</code>, contenant respectivement la position horizontale et la position verticale de la porte logique XOR à initialiser.
+On considèrera que (<code>pos_x</code>,<code>pos_y</code>) sont les coordonnées de la case la plus en haut à gauche du composant.</p>
+<p>Pour placer la porte logique XOR à la bonne position, on initialisera sa position avec l'attribut de classe <code>blueprint</code>, puis on la déplacera avec la méthode <code>position_shift</code>.</p>
+<h3 id="un-conteneur-de-composants-circuit">Un conteneur de composants (circuit)</h3>
+<p>Nous allons à présent définir un <strong>conteneur</strong> de composants, que nous allons appeler "circuit".
+L'idée sera de pouvoir facilement <strong>itérer</strong> sur les composants fournis à l'initialisation de l'automate.</p>
+<p>Voici la structure de la classe <code>circuit</code> que nous allons programmer :</p>
+<pre><code>class circuit():
+
+    def __init__(self):
+
+        #Complétez ici
+
+    def __len__(self):
+
+        #Complétez ici
+
+    def __getitem__(self,i):
+
+        #Complétez ici
+
+    def __setitem__(self,i,compo):
+
+        #Complétez ici
+
+    def __iter__(self):
+
+        self.index = -1
+
+        return self
+
+    def __next__(self):
+
+        self.index += 1
+
+        if self.index &lt; len(self):
+            return self[self.index]
+        else:
+            raise StopIteration
+
+    def __add__(self,compo):
+
+        #Complétez ici
+
+    def __sub__(self,compo):
+
+        #Complétez ici  
+</code></pre>
+<p>Complétez les différentes méthodes de ce conteneur<code>circuit</code>, en vous inspirant du conteneur <code>charges</code> que vous avez programmé précédemment.</p>
+<h2 id="definition-de-lautomate-cellulaire">Définition de l'automate cellulaire</h2>
+<p>De la même manière que pour le TP précédent, nous allons programmer l'automate cellulaire "Wire-world" à proprement parler sous la forme de 2 classes :</p>
+<ul>
+<li>
+<p>Une <strong>classe mère</strong> <code>cellular_automaton_2D</code> qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D.</p>
+</li>
+<li>
+<p>Une <strong>classe fille</strong> <code>wire_world</code> qui contiendra les attributs et méthodes spécifiques aux automates "Wire-world".</p>
+</li>
+</ul>
+<h3 id="un-automate-cellulaire-2d">Un automate cellulaire 2D</h3>
+<p>Commençons par la classe mère <code>cellular_automaton_2D</code>.</p>
+<p>Elle est similaire à la classe du même nom programmée lors du TP précédent :</p>
+<pre><code>class cellular_automaton_2D():
+
+    def __init__(self,grid_size_x,grid_size_y):
+
+        self.iteration = 0
+        self.set_grid(np.zeros((grid_size_x,grid_size_y)))
+
+    def set_grid(self,grid):
+
+        self.grid = np.copy(grid)
+
+    def get_grid(self):
+
+        return np.copy(self.grid)
+
+    def get_grid_size(self):
+
+        size_x,size_y = np.shape(self.grid)
+
+        return size_x,size_y
+
+    def get_iteration(self):
+
+        return self.iteration
+
+    def iterate_grid(self):
+
+        raise NotImplementedError('Méthode non implémentée pour un automate en général.')
+
+    def display_grid(self):
+
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.show()
+
+    def save_grid(self):
+
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.savefig('automaton_'+str(self.iteration)+'.png')
+        plt.close()
+</code></pre>
+<p>Comme nous l'avions expliqué lors du TP précdent, avoir définit dans une classe mère un automate cellulaire 2D de manière générale nous permet de ne pas avoir à redéfinir les attributs et méthodes de base à chaque nouvel automate que nous programmons.</p>
+<p>Vous pouvez donc reprendre cette classe telle quelle.</p>
+<p><em>Question pour voir si vous avez compris : pourquoi la fonction <code>iterate_grid</code> ne fait que renvoyer un message d'erreur ?</em></p>
+<h3 id="un-automate-cellulaire-wire-world">Un automate cellulaire Wire-world</h3>
+<p>Passons à la définition de la classe fille <code>wire_world</code>.</p>
+<p>L'idée sera que l'utilisateur puisse initialiser la grille de l'automate avec un <strong>conteneur d'électrons</strong> et un <strong>conteneur de composants</strong>, puis le faire tourner pour un nombre défini d'itérations.</p>
+<p>Voici donc la structure de la classe <code>wire_world</code> que nous allons programmer :</p>
+<pre><code>class wire_world(cellular_automaton_2D):
+
+    def __init__(self,grid_size_x,grid_size_y,circuit,charges):
+
+        #Complétez ici
+
+    def __print_circuit(self,circuit):
+
+        #Complétez ici
+
+    def __charge_circuit(self,charges):
+
+        #Complétez ici
+
+    def get_neighbors(self):
+
+        #Complétez ici
+
+    def iterate_grid(self,nb_iterations):
+
+        #Complétez ici
+</code></pre>
+<h4 id="constructeur_3">Constructeur</h4>
+<p>Complétez le <strong>constructeur</strong>.</p>
+<p>Il prendra en entrée 2 entiers :</p>
+<ul>
+<li>
+<p><code>grid_size_x</code> et <code>grid_size_y</code> correspondant aux dimensions de la grile de l'automate</p>
+</li>
+<li>
+<p>Un conteneur de composants <code>circuit</code> et un conteneur d'électrons <code>charges</code> permettant à l'utilisateur d'initialiser l'automate à sa convenance.</p>
+</li>
+</ul>
+<p>Il initialisera d'abord une grille vide en se servant du constructeur de la classe mère.
+Ensuite, il appellera les méthodes privées <code>__print_circuit</code> et <code>__charge_circuit</code>, avec pour entrées <code>circuit</code> et <code>charges</code>.
+Ces méthodes, que nous allons programmer dans la suite, permettront d'ajouter les composants et les électrons aux positions désirées sur la grille de l'automate.</p>
+<h4 id="methodes-privees">Méthodes privées</h4>
+<p>Complétez ensuite les <strong>méthodes privées</strong> <code>__print_circuit</code> et <code>__charge_circuit</code>.</p>
+<p>Comme nous l'avons expliqué plus tôt, ces méthodes permettront de placer des composants et des électrons sur la grille de l'automate à son initialisation.</p>
+<p>Ces méthodes fonctionneront de la manière suivante :</p>
+<ul>
+<li>
+<p><code>__print_circuit</code> prendra en entrée un conteneur de composants, et mettra à 1 les cases de la grille de l'automate correspondant aux coordonnées des différents composants du conteneur.</p>
+</li>
+<li>
+<p><code>__charge_circuit</code> prendra en entrée un conteneur d'électrons, et mettra à 2 ou 3 les case de la grille de l'automae correspondant aux coordonnées de la queue et de la tête des différents électrons du conteneur.</p>
+</li>
+</ul>
+<p>Grâce aux <strong>méthodes spéciales</strong> programmées précémment pour chaque type de conteneur, vous pourrez facilement en parcourir les éléments. </p>
+<p><em>D'après vous, pourquoi est-il préférable que les méthodes <code>__print_circuit</code> et <code>__charge_circuit</code> soient privées ?</em></p>
+<h4 id="getter_1">Getter</h4>
+<p>Complétez maintenant le "<strong>getter</strong>" <code>get_neighbors</code>.</p>
+<p>Il retournera une matrice de même dimensions que la grille de l'automate, contenant le nombre de voisins (voisinage de Moore) égaux à 3 pour chaque case égale à 1, et 0 partout ailleurs.</p>
+<h4 id="iteration-de-lautomate">Itération de l'automate</h4>
+<p>Enfin, nous allons programmer la méthode qui permettra de d'itérer un automate "Wire-world" un nombre donné de fois. 
+L'idée sera d'appeler dans cette méthode d'autres méthodes programmées précédemment.</p>
+<p>Complétez donc la méthode <code>iterate_grid</code>.</p>
+<p>Pour le nombre entier d'itérations <code>nb_iterations</code> donné en entrée, elle appliquera les règles de "Wire-world" à la grille de l'automate.
+Pour chaque itération, on incrémentera de 1 l'attribut d'instance <code>iteration</code>.</p>
+<h2 id="instanciation-et-simulation">Instanciation et simulation</h2>
+<p>Ça y est, votre automate cellulaire "Wire-world" est prêt à tourner !</p>
+<p>Reste à définir un circuit, et à y positionner des électrons.</p>
+<p>Voici le circuit que nous nous proposons de simuler :</p>
+<p><img alt="Circuit à programmer" src="../img/TP3_example_circuit.png" /></p>
+<p>Créez une instance de conteneur <code>circuit</code>, et ajoutez-y les composants nécessaires à créer ce circuit.</p>
+<p>Ensuite, créez 2 instances de <code>charges</code>, et ajoutez-y les électrons nécessaires pour tester les 2 initialisations suivantes de l'automate :</p>
+<p><img alt="Initialisations de l'automate à essayer" src="../img/TP3_example_initialization.png" /></p>
+<p>Créez 2 instances d'automates cellulaires "Wire-world", permettant de tester les 2 initialisations, pour 50 itérations chacune.
+Enregistrez une image PNG de la grille de l'automate à chaque itération.</p>
+<p>Si vous regardez les images PNG obtenues, vous devriez voir un comportement similaire à celui-ci :</p>
+<p><img alt="Simulation TP3" src="../img/TP3_example.gif" /></p>
+<p><em>Ceci est-il bien le comportement attendu pour une porte logique XOR ?</em></p>
+<hr />
+<p>Bravo ! Vous avez découvert l'utilité des <strong>méthodes spéciales</strong> Python pour définir un conteneur.
+Pour préparer le TP examen, n'hésitez pas à re-faire les TP chez vous, et à vous entrainer sur les sujets d'examen des années précédentes.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../TP2/" class="btn btn-neutral float-left" title="TP2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../examen_2025/" class="btn btn-neutral float-right" title="Examen 2025">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../TP2/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../examen_2025/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

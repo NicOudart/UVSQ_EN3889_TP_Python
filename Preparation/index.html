@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Nicolas OUDART" /><link rel="canonical" href="https://nicoudart.github.io/UVSQ_EN3889_TP_Python/Preparation/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Préparation - UVSQ_EN3889_TP_Python</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Pr\u00e9paration";
+        var mkdocs_page_input_path = "Preparation.md";
+        var mkdocs_page_url = "/UVSQ_EN3889_TP_Python/Preparation/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> UVSQ_EN3889_TP_Python
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Préparation</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#les-automates-cellulaires-elementaires">Les automates cellulaires élémentaires</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#determiner-les-regles-de-lautomate">Déterminer les règles de l'automate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#initialiser-lautomate">Initialiser l'automate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#mettre-a-jour-lautomate">Mettre à jour l'automate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#iteration-de-lautomate">Itération de l'automate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#affichage-de-la-simulation">Affichage de la simulation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vers-loriente-objet">Vers l'orienté objet</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TP1/">TP1</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TP2/">TP2</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TP3/">TP3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../examen_2025/">Examen 2025</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">UVSQ_EN3889_TP_Python</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Préparation</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="preparation-de-la-programmation-procedurale-vers-loriente-objet">Préparation : De la programmation procédurale vers l'orienté objet</h1>
+<p><img alt="En-tête TP préparation" src="../img/Header_TP_preparation.png" /></p>
+<p><em>Lors de ce TP, nous allons réviser la programmation procédurale en Python.</em>
+<em>Vous devrez programmer un automate cellulaire élémentaire, en complétant petit à petit les fonctions d'un programme.</em>
+<em>En fin de TP, nous réfléchirons à la manière dont ce programme pourrait être transformé en paradigme orienté objet.</em></p>
+<hr />
+<h2 id="les-automates-cellulaires-elementaires">Les automates cellulaires élémentaires</h2>
+<p>On appelle <strong>automate cellulaire élémentaire</strong> un algorithme itératif qui va initialiser une matrice 1D infinie, dont les éléments ne peuvent prendre que les valeurs 0 ou 1 :</p>
+<p><img alt="Automate cellulaire élémentaire" src="../img/TP_preparation_cellular_automaton.png" /></p>
+<p>A chaque itération, chaque élément de la matrice change ou non de valeur, suivant une série de règles sur :</p>
+<ul>
+<li>
+<p>La valeur de l'élément à sa gauche.</p>
+</li>
+<li>
+<p>La valeur de l'élément à sa droite.</p>
+</li>
+<li>
+<p>La valeur de l'élément lui-même.</p>
+</li>
+</ul>
+<p>Pour chaque élément, il n'y a donc que <strong>8 configurations possibles</strong> :</p>
+<p><img alt="Les 8 configurations" src="../img/TP_preparation_configurations.png" /></p>
+<p>Il suffit donc de définir la valeur que prendra l'élément dans ces 8 situations pour obtenir les <strong>règles</strong> d'un automate cellulaire élémentaire.</p>
+<p>On en déduit qu'il n'existe que <strong>256 jeux de règles possibles</strong>, soit autant d'automates cellulaires élémentaires différents.</p>
+<p>En 1983, le mathématicien anglais Stephen Wolfram a proposé une manière d'identifier ces 256 automates, avec un numéro.</p>
+<p>Si nous définissons la valeur que prend un élément d'un automate dans les 8 configurations possibles, dans cet ordre :</p>
+<p><img alt="Code de Wolfram" src="../img/TP_preparation_Wolfram_code.png" /></p>
+<p>On obtient la série de nombres binaires 01101110, qui correspond en décimal à 110.</p>
+<p>Ce numéro, que l'on nomme <strong>code de Wolfram</strong>, sera l'identifiant de cet automate. 
+On parlera aussi de "règle n°110".</p>
+<p>Voici l'évolution de l'automate cellulaire n°110 pour une itération :</p>
+<p><img alt="Exemple pour la règle 110" src="../img/TP_preparation_iteration.gif" /></p>
+<p>Il est bien entendu impossible de simuler l'évoluation d'une matrice 1D infinie avec un ordinateur.
+On définira donc une matrice 1D de dimensions finies, et on pourra choisir de gèrer les cas sur les bords de différentes façons :</p>
+<ul>
+<li>
+<p>Ne jamais faire varier les cases sur les bords.</p>
+</li>
+<li>
+<p>Faire comme si une case imaginaire à gauche du bord gauche était à 0 et une case imaginaire à droite du bord droit était à 0.</p>
+</li>
+<li>
+<p>Faire comme si la case à gauche du bord gauche était la case du bord droit, et la case à droite du bord droit était la case du bord gauche.</p>
+</li>
+</ul>
+<p><em>Vérifions si vous avez tout compris : quelles sont les règles de l'automate n°90 ?</em>
+<em>Si nous initialisons l'automate avec 010110100, quelle serait l'état de l'automate à l'itération suivante (en ne faisant pas varier les bords) ?</em></p>
+<p>Lors de ce TP, nous allons programmer un automate cellulaire élémentaire de code de Wolfram donné, pour un nombres d'itérations donné un état initial donné.</p>
+<p>Nous allons diviser ce problème complexe en fonctions simples : nous ferons donc ici de la <strong>programmation procédurale</strong>.</p>
+<p><strong>N'oubliez pas d'importer Numpy et Matplotlib au début de votre programme !</strong></p>
+<h2 id="determiner-les-regles-de-lautomate">Déterminer les règles de l'automate</h2>
+<p>Pour commencer, il nous faut des fonctions pour convertir le numéro d'un automate cellulaire en ses 8 règles.</p>
+<p>Complétez la fonction <code>nb_to_bin</code> suivante :</p>
+<pre><code>def nb_to_bin(rule_number):
+
+    #Complétez ici
+
+    return wolfram_code
+</code></pre>
+<p>Elle prendra en entrée un entier <code>rule_number</code> correspondant au numéro de la règle de l'automate.
+Elle retournera en sortie une chaîne de caractères <code>wolfram_code</code>, contenant la conversion en binaire de l'entier <code>rule_number</code>.
+Cette chaîne de caractère contiendra toujours 8 caractères.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Aide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Pour convertir un nombre décimal en binaire, il suffit d'appliquer des divisions entières par 2 à ce nombre, jusqu'à ce que le quotient devienne nul. La juxtaposition des restes est la conversion en binaire du nombre.</td>
+</tr>
+<tr>
+<td style="text-align: left;">En Python, l'opérateur de la division entière est <code>//</code>, celui du reste de la division entière est <code>%</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Proposez une ligne de commande Python pour tester votre fonction sur un exemple. Obtenez-vous bien le résulat attendu ?</em></p>
+<p>Complétez ensuite la fonction <code>bin_to_rule</code> suivante :</p>
+<pre><code>def bin_to_rule(wolfram_code):
+
+    #Complétez ici
+
+    return rule_dict
+</code></pre>
+<p>Elle prendra en entrée une chaîne de 8 caractères <code>wolfram_code</code>, telle que renvoyée par la fonction <code>nb_to_bin</code>.
+Elle retournera en sortie un dictionnaire contenant les clés '111', '110', '101', '100', '011', '010', '001' et '000', correspondant aux configurations possibles pour chaque élément de l'automate.
+Chaque clé contiendra '0' ou '1' suivant les règles de l'automate.</p>
+<p>Nous nous servirons du dictionnaire de règles généré par la fonction <code>bin_to_rule</code> afin de déterminer les changements des valeurs d'un automate d'une itération à une autre.</p>
+<h2 id="initialiser-lautomate">Initialiser l'automate</h2>
+<p>Nous allons à présent programmer une fonction pour définir l'état initial d'un automate cellulaire.</p>
+<p>Complétez la fonction <code>init_automaton</code> suivante :</p>
+<pre><code>def init_automaton(init_sequence):
+
+    #Complétez ici
+
+    return auto_vect
+</code></pre>
+<p>Elle prendra en entrée une chaîne de caractères <code>init_sequence</code>, ne contenant que des '0' ou des '1'.
+Elle retournera en sortie une matrice Numpy 1D contenant la même séquence de 0 et de 1, sous la forme d'entiers.</p>
+<h2 id="mettre-a-jour-lautomate">Mettre à jour l'automate</h2>
+<p>Nous pouvons à présent déterminer les règles d'un automate, et l'initialiser.
+Il nous faut maintenant une fonction pour le mettre à jour à chaque itération, en se basant sur les règles déterminées.</p>
+<p>Complétez la fonction <code>update_automaton</code> suivante :</p>
+<pre><code>def update_automaton(auto_vect,rule_dict):
+
+    #Complétez ici
+
+    return auto_vect
+</code></pre>
+<p>Elle prendra en entrée une matrice Numpy 1D <code>auto_vect</code> contenant l'état de l'automate à une itération donnée, et <code>rule_dict</code> un dictionnaire tel que renvoyé par la fonction <code>bin_to_rule</code>.
+Elle retournera en sortie une matrice Numpy 1D <code>auto_vect</code>, contenant l'état de l'automate à l'itération suivante, déterminé à partir des règles de l'automate.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Aide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Pour réaliser une copie indépendante d'une matrice Numpy, il faut utiliser la méthode <code>copy</code> de Numpy.</td>
+</tr>
+<tr>
+<td style="text-align: left;">Pour convertir une valeur en entier ou en chaîne de caractère, on peut utiliser les méthodes natives de Python <code>int</code> et <code>str</code>.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Proposez une ligne de commande Python pour tester votre fonction sur un exemple d'automate. Obtenez-vous bien le résulat attendu ?</em></p>
+<h2 id="iteration-de-lautomate">Itération de l'automate</h2>
+<p>Ça y est, nous avons à présent toutes les fonctions dont nous avons besoin pour faire tourner un automate cellulaire élémentaire.</p>
+<p>Nous allons définir une fonction appellant les fonction programmées précédemment, pour itérer un automate cellulaire donné, un nombre de fois donné, pour une initialisation donnée.</p>
+<p>Complétez la fonction <code>iterate_automaton</code> suivante :</p>
+<pre><code>def iterate_automaton(init_sequence,rule_number,nb_iterations):
+
+    #Complétez ici
+
+    return auto_mat
+</code></pre>
+<p>Elle prendra en entrée une chaîne de caractères <code>init_sequence</code> contenant la séquence de '0' et de '1' pour initialiser l'automate, un entier <code>rule_number</code> correspondant au numéro de règles (code de Wolfram) de l'automate, et un entier <code>nb_iterations</code> correspondant au nombre d'itérations pour lequel faire tourner l'automate.
+Elle retournera en sortie une matrice Numpy 2D concaténant verticalement les états de l'automate au fil des itérations.</p>
+<h2 id="affichage-de-la-simulation">Affichage de la simulation</h2>
+<p>Votre automate cellulaire est prêt à tourner !</p>
+<p>Nous allons le tester en affichant la matrice Numpy 2D obtenue en sortie de <code>iterate_automaton</code> sous la forme d'une image en noir et blanc : un pixel blanc correspond à un 0, un pixel noir correspond à un 1.</p>
+<p>Voici une fonction <code>display_automaton</code>, qui vous permettra de réaliser un tel affichage à partir d'une matrice Numpy 2D <code>auto_mat</code>.</p>
+<pre><code>def display_automaton(auto_mat):
+
+    plt.imshow(auto_mat,cmap='binary')
+</code></pre>
+<p>Faites tourner l'automate n°110 pendant 300 itérations, avec la séquence d'initialisation suivante :</p>
+<p>'000000000000000000000000000000000000000000000000000000001110110100
+10001100000100111010110001011000001110111001100100100011001011001'</p>
+<p>Si vous affichez la matrice 2D obtenue sous la forme d'une image, vous devriez obtenir :</p>
+<p><img alt="Simulation TP préparation" src="../img/TP_preparation_example.png" /></p>
+<p>L'automate cellulaire élémentaire de règle n°110 est connu pour son comportement complexe, ni complètement chaotique, ni complètement ordonné, où des motifs semblent se déplacer et s'entrechoquer.
+Pour cette raison, il est souvent considéré comme le plus intéressant des automates cellulaires élémentaires.</p>
+<p>Mais vous pouvez essayer d'autres règles ! Par exemple, les règles 30 et 90 donnent aussi des motifs amusants. </p>
+<h2 id="vers-loriente-objet">Vers l'orienté objet</h2>
+<p>Lors de ce TP, nous avons programmé les automates cellulaires élémentaires en paradigme <strong>procédural</strong>, afin de vous faire réviser les bases de la programmation avec Python.
+Cependant, programmer en paradigme <strong>orienté objet</strong> aurait ici été très pertinent.</p>
+<p>En effet, on peut voir un automate cellulaire élémentaire comme une classe d'automate, contenant des règles et une matrice 1D à laquelle peuvent s'appliquer des méthodes qui vont en changer les valeurs.</p>
+<p><em>Avez-vous une idée des attributs et méthodes nécessaires à un automate cellulaire élémentaire ?</em> </p>
+<p>Transformons notre programme en orienté objet.
+Ouvrez un nouveau fichier Python, qui contiendra la classe <code>cellular_automaton</code> suivante :</p>
+<pre><code>class cellular_automaton:
+
+    def __init__(self,init_sequence,rule_number):
+
+        self.set_rules(rule_number)
+        self.set_grid(init_sequence)
+        self.iteration = 0
+
+    def set_rules(self,rule_number):
+
+        #Complétez ici
+
+    def get_rules(self):
+
+        #Complétez ici
+
+    def set_grid(self):
+
+        #Complétez ici
+
+    def get_grid(self):
+
+        #Complétez ici
+
+    def update(self);
+
+        #Complétez ici
+
+    def iterate(self,nb_iterations):
+
+        #Complétez ici
+
+    def display(self):
+
+        #Complétez ici
+</code></pre>
+<p>Essayez de compléter la classe <code>cellular_automaton</code> en vous basant sur les fonctions que vous avez programmées précédemment.</p>
+<p>Créez une instance de votre automate pour la règle n°110, et faites un affichage du résultat de 300 itérations, pour la même séquence d'initialisation que précédemment.
+Vérifiez que vous obtenez bien le même résultat.</p>
+<hr />
+<p>Bravo ! Vous avez écrit votre 1er programme en <strong>orienté objet</strong> !
+Lors des TP suivants, nous programmerons des automates cellulaires plus complexes, directement dans ce paradigme.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Introduction"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../TP1/" class="btn btn-neutral float-right" title="TP1">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../TP1/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

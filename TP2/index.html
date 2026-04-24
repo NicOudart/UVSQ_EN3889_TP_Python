@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Nicolas OUDART" /><link rel="canonical" href="https://nicoudart.github.io/UVSQ_EN3889_TP_Python/TP2/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>TP2 - UVSQ_EN3889_TP_Python</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "TP2";
+        var mkdocs_page_input_path = "TP2.md";
+        var mkdocs_page_url = "/UVSQ_EN3889_TP_Python/TP2/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> UVSQ_EN3889_TP_Python
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Introduction</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Preparation/">Préparation</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TP1/">TP1</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">TP2</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#les-turmites">Les Turmites</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#definition-de-la-classe-mere">Définition de la classe mère</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructeur">Constructeur</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#getters">Getters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setters">Setters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#iteration-de-lautomate">Itération de l'automate</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#affichage-et-export">Affichage et export</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#definition-de-la-classe-fille">Définition de la classe fille</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#constructeur_1">Constructeur</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#getters_1">Getters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#setters_1">Setters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#methodes-privees">Méthodes privées</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#iteration-de-lautomate_1">Itération de l'automate</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#instanciation-et-simulation">Instanciation et simulation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#vers-les-methodes-speciales">Vers les méthodes spéciales</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../TP3/">TP3</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../examen_2025/">Examen 2025</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">UVSQ_EN3889_TP_Python</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">TP2</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="tp-2-heritage-et-polymorphisme">TP 2 : Héritage et polymorphisme</h1>
+<p><img alt="En-tête TP2" src="../img/Header_TP2.png" /></p>
+<p><em>Lors de ce TP, nous allons programmer un automate cellulaire 2D de type "turmite", en complétant petit à petit une classe mère commune à tous les automates cellulaires 2D, puis une classe fille spécifique aux "turmites".</em>
+<em>En fin de TP, nous réfléchirons à comment nous pourrions améliorer notre programme en s'appuyant sur les méthodes spéciales Python.</em></p>
+<hr />
+<h2 id="les-turmites">Les Turmites</h2>
+<p>Ce TP portera sur un nouveau type d'automate cellulaire 2D : les <strong>turmites</strong>.</p>
+<p>Leur principe est le suivant :
+On imagine qu'une fourmi se déplace sur la grille de l'automate, où chaque case contient une valeur 0 ou 1.
+A chaque itération, la fourmi ne peut se déplacer que d'une case.
+Suivant les règles de l'automate, la fourmi peut changer ou non de direction, et changer ou non la valeur de la case sur laquelle elle se trouve.</p>
+<p>Pour les automates vus aux TP précédents, chaque case pouvait potentiellement changer de valeur à chaque itération.
+Dans le cas des "turmites", seule la case où se trouve la fourmi peut changer de valeur à une itération donnée.</p>
+<p><img alt="Illustration de turmite" src="../img/TP2_turmite.gif" /></p>
+<p>La "<strong>fourmi de Langton</strong>" est probablement le "turmite" le plus connu.
+Imaginé en 1986 par l'informaticien américain Christopher Langton, il est connu pour faire émerger un comportement ordonné et cyclique appelé "la route", après des milliers d'itérations d'un comportement chaotique.
+Ce comportement fini toujours par apparaitre, qu'importe l'initialisation de la grille.</p>
+<p><img alt="La fourmi de Langton" src="../img/TP2_Langton_ant.png" /></p>
+<p>Depuis, d'autres turmites aux comportements intéressants ont été découverts.</p>
+<p>Le nom "turmite" est la contraction de "Turing" et "termite".
+En effet, les "turmites" sont théoriquement des "machines de Turing" (concept abstrait imaginé par le mathématicien anglais Alan Turing).
+Et le mot "termite" fait référence à la fourmi de Langton se déplaçant sur la grille.</p>
+<p>La fourmi d'un "turmite" est caractérisée par 4 propriétés :</p>
+<ul>
+<li>
+<p>Sa <strong>position</strong> sur la grille (les coordonnées de la case sur laquelle elle se trouve).</p>
+</li>
+<li>
+<p>Son <strong>orientation</strong> (vers le haut, le bas, la droite, la gauche).</p>
+</li>
+<li>
+<p>La <strong>valeur de la case</strong> sur laquelle elle se trouve (0 ou 1).</p>
+</li>
+<li>
+<p>L'<strong>état interne</strong> de la fourmi (0 ou 1).</p>
+</li>
+</ul>
+<p><img alt="Propriétés des fourmis" src="../img/TP2_ant_properties.gif" /></p>
+<p>A chaque itération de l'automate, la fourmi va réaliser les opérations suivantes, dans cet ordre :</p>
+<ul>
+<li>
+<p>La fourmi change ou non la valeur de la case sur laquelle elle se trouve, suivant des règles sur son état interne et de l'ancenne valeur de la case.</p>
+</li>
+<li>
+<p>La fourmi change d'orientation ou non, suivant des règles sur son état interne et l'ancienne valeur de la case sur laquelle elle se trouve.</p>
+</li>
+<li>
+<p>La fourmi change d'état interne ou non, suivant des règles sur son état interne et l'ancienne valeur de la case sur laquelle elle se trouve.</p>
+</li>
+<li>
+<p>La fourmi avance d'une case, dans la direction correspondant à son orientation.</p>
+</li>
+</ul>
+<p>On met souvent les règles d'un "turmite" sous la forme d'un tableau.
+Voici celui de la fourmi de Langton.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Etat de la fourmi</th>
+<th style="text-align: center;">Valeur de la case</th>
+<th style="text-align: center;">Nouvelle valeur de la case</th>
+<th style="text-align: center;">Rotation de la fourmi</th>
+<th style="text-align: center;">Nouvel état interne de la fourmi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">L</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">L</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>(Pour la rotation, L = vers la gauche, R = vers la droite, U = demi-tour, N = pas de rotation).</p>
+<p>Pour désigner rapidement la règle d'un turmite, on peut écrire les différentes lignes de ce tableau, séparées par des slashs.
+Pour la fourmi de Langton, on parlera de règle '<strong>1R0/0L0/1R1/0L1</strong>'.</p>
+<p><em>Vérifions si vous avez bien compris. Quelles règles suivra l'automate '1L1/1L1/1R1/0N0' ? Pour vous aider, écrivez le tableau correspondant.</em></p>
+<p><img alt="Règles du turmite Fibonacci" src="../img/TP2_iteration.gif" /></p>
+<p>Lors de ce TP, nous allons programmer un automate cellulaire de type "turmite", sous la forme de 2 classes Python : une <strong>classe mère</strong> commune à tous les automates cellulaires 2D, et une <strong>classe fille</strong> propre aux automates "turmites", qui <strong>héritera</strong> de la classe mère.</p>
+<p><strong>N'oubliez pas d'importer Numpy et Matplotlib au début de votre programme !</strong></p>
+<h2 id="definition-de-la-classe-mere">Définition de la classe mère</h2>
+<p>Nous allons commencer par définir la <strong>classe mère</strong> <code>cellular_automaton_2D</code>, qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D.
+Pour définir un automate cellulaire en particulier, il suffira de définir une classe fille héritant de cette classe mère, sans avoir besoin de tout réécrire.</p>
+<p>Voici la structure de la classe mère que nous allons programmer :</p>
+<pre><code>class cellular_automaton_2D:
+
+    def __init__(self,grid_size_x,grid_size_y):
+
+        #Complétez ici
+
+    def set_grid(self,grid):
+
+        #Complétez ici
+
+    def get_grid(self):
+
+        #Complétez ici
+
+    def set_rules(self):
+
+        #Complétez ici
+
+    def get_rules(self):
+
+        #Complétez ici
+
+    def get_iteration(self):
+
+        #Complétez ici
+
+    def iterate_grid(self):
+
+        #Complétez ici
+
+    def display_grid(self):
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.show()
+
+    def save_grid(self):
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.savefig('automaton_'+str(self.iteration)+'.png')
+        plt.close()
+</code></pre>
+<p>Cette structure doit vous dire quelque chose : elle ressemble beaucoup à celle de la classe programmée lors du TP précédent.</p>
+<p>Vous devrez compléter petit à petit les méthodes de cette classe.</p>
+<h3 id="constructeur">Constructeur</h3>
+<p>Pour commencer, complétez le <strong>constructeur</strong> :</p>
+<pre><code>    def __init__(self,grid_size_x,grid_size_y):
+
+        #Complétez ici
+</code></pre>
+<p>Il prendra en entrée 2 entiers <code>grid_size_x</code> et <code>grid_size_y</code> contenant les dimensions de la grille de l'automate.</p>
+<p>Il initialisera 2 attributs d'instance de la manière suivante :</p>
+<ul>
+<li>
+<p><code>grid</code> en utilisant une méthode set_grid, qui prendra en entrée une matrice Numpy 2D ne contenant que des 0 de dimensions <code>grid_size_x</code> et <code>grid_size_y</code>, et que nous programmerons plus tard.</p>
+</li>
+<li>
+<p><code>iteration</code> directement initialisé à 0, et qui nous servira à suivre le nombre d'itération pour lequel a tourné l'automate depuis son initialisation.</p>
+</li>
+</ul>
+<p><em>Quelle ligne de commande utiliseriez-vous pour créer un automate cellulaire 2D quelconque de dimensions 100x100 ?</em></p>
+<h3 id="getters">Getters</h3>
+<p>Nous allons à présent compléter les "<strong>getters</strong>".</p>
+<p>Complétez la méthode <code>get_grid</code> suivante :</p>
+<pre><code>    def get_grid(self):
+
+        #Complétez ici
+</code></pre>
+<p>Elle devra retourner une copie Numpy de l'attribut d'instance <code>grid</code>.
+Cet attribut contiendra la grille de l'automate cellulaire.</p>
+<p>Complétez la méthode <code>get_rules</code> suivante :</p>
+<pre><code>    def get_rules(self):
+
+        #Complétez ici
+</code></pre>
+<p>Cette méthode n'ayant pas de sens tant que le type exact d'automate (et donc de règle) n'est pas connu, elle ne sera donc pas implémentée tout de suite.
+Mais il s'agit d'une méthode nécessaire à tout automate cellulaire 2D, et devra donc être définie spécifiquement dans chaque classe fille.</p>
+<p>Différentes classes filles pourront donc avoir différentes implémentations de <code>get_rules</code> : c'est le principe du <strong>polymorphisme</strong>.</p>
+<p>La méthode <code>get_rules</code> renverra donc juste un message d'erreur de type <code>NotImplementedError</code>.</p>
+<p>Complétez la méthode <code>get_iteration</code> suivante :</p>
+<pre><code>    def get_iteration(self):
+
+        #Complétez ici
+</code></pre>
+<p>Elle devra retourner l'attribut d'instance <code>iteration</code>.
+Cet attribut contiendra le nombre d'itérations effectuées par l'automate depuis son initialisation.</p>
+<h3 id="setters">Setters</h3>
+<p>Nous allons à présent compléter les "<strong>setters</strong>".</p>
+<p>Complétez la méthode <code>set_grid</code> suivante :</p>
+<pre><code>    def set_grid(self,grid):
+
+        #Complétez ici
+</code></pre>
+<p>Elle prendra en entrée une matrice 2D Numpy <code>grid</code>, et affectera une copie Numpy de cette matrice à l'attribut d'instance <code>grid</code>.</p>
+<p>Ainsi, cette méthode permettra de mettre à jour l'attribut <code>grid</code> de l'automate avec une nouvelle grille.</p>
+<pre><code>    def set_rules(self):
+
+        #Complétez ici
+</code></pre>
+<p>Tout comme pour <code>get_rules</code>, cette fonction est nécessaire à tout automate cellulaire 2D, mais doit être définie spécifiquement pour chaque type d'automate.</p>
+<p>Elle renverra donc juste un message d'erreur de type <code>NotImplementedError</code>.</p>
+<h3 id="iteration-de-lautomate">Itération de l'automate</h3>
+<p>Les automates cellulaires étant des algorithmes itératifs, tout automate cellulaire 2D a besoin d'une méthode pour être itéré.
+Cependant, le contenu exact de la méthode va dépendre du type d'automate que nous cherchons à implémenter.</p>
+<p>Une fois de plus, nous allons donc définir un patron de méthode, qui devra être adapté dans les différentes classes filles.</p>
+<p>Complétez la méthode <code>iterate_grid</code> suivante :</p>
+<pre><code>    def iterate_grid(self):
+
+        #Complétez ici
+</code></pre>
+<p>Elle renverra juste un message d'erreur de type <code>NotImplementedError</code>.</p>
+<h3 id="affichage-et-export">Affichage et export</h3>
+<p>Ajoutez les méthodes suivantes à votre classe mère :</p>
+<pre><code>    def display_grid(self):
+
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.show()
+
+    def save_grid(self):
+
+        plt.figure()
+        plt.imshow(self.grid,cmap='binary')
+        plt.savefig('automaton_'+str(self.iteration)+'.png')
+        plt.close()
+</code></pre>
+<p>La méthode <code>display_grid</code> servira à afficher l'état de la grille de l'automate à l'itération actuelle, sous la forme d'une image en noir et blanc (un pixel noir correspond à une case 1, un pixel blanc à une case 0).</p>
+<p>La méthode <code>save_grid</code> servira à enregistrer une telle image de l'état de la grille de l'automate à l'itération actuelle, au format PNG.</p>
+<p>Ces méthodes étant utiles pour tous les types d'automates cellulaires 2D, elles sont dans la classe mère.</p>
+<h2 id="definition-de-la-classe-fille">Définition de la classe fille</h2>
+<p>Maintenant que nous avons définit les attributs et méthodes communs à tous les automates cellulaires 2D, nous pouvons définir une <strong>classe fille</strong> <code>turmite</code>, qui va <strong>hériter</strong> de ces méthodes et attributs.</p>
+<p>Voici la structure de la classe fille que nous allons programmer :</p>
+<pre><code>class turmite(cellular_automaton_2D):
+
+    def __init__(self,grid_size_x,grid_size_y,rules_code,state,pos_x,pos_y,orientation):
+
+        #Complétez ici
+
+    def set_rules(self,rules_code):
+
+        #Complétez ici
+
+    def get_rules(self):
+
+        #Complétez ici
+
+    def set_state(self,state):
+
+        #Complétez ici
+
+    def get_state(self):
+
+        #Complétez ici
+
+    def set_position(self,pos_x,pos_y):
+
+        #Complétez ici
+
+    def get_position(self):
+
+        #Complétez ici
+
+    def set_value(self,value):
+
+        #Complétez ici
+
+    def get_value(self):
+
+        #Complétez ici
+
+    def set_orientation(self,orientation):
+
+        #Complétez ici
+
+    def get_orientation(self):
+
+        #Complétez ici
+
+    def __turn(self,direction):
+
+        #Complétez ici
+
+    def __move(self):
+
+        #Complétez ici
+
+    def iterate_grid(self,nb_iterations):
+
+        #Complétez ici
+</code></pre>
+<p><em>Comment avons-nous indiqué à Python que la classe <code>turmite</code> hérite de la classe <code>cellular_automaton_2D</code> ?</em></p>
+<p><em>Vérifions si vous avez compris le concept d'héritage : comment feriez-vous pour récupérer le nombre d'itérations d'une instance <code>ant</code> de <code>turmite</code> ?</em> </p>
+<p>Vous devriez remarquer que certaines des méthodes "non implémentées" que nous avions définies dans la classe mère seront <strong>redéfinies</strong> dans la classe fille.
+Une autre classe fille pourra également redéfinir ces méthodes d'une autre manière : c'est le principe du <strong>polymorphisme</strong>.</p>
+<p>Vous devriez également remarquer que 2 des méthodes sont <strong>privées</strong>.
+Elles n'auront donc pas vocation à être appelées de l'extérieur.</p>
+<p><em>Avez-vous repéré quelles méthodes sont privées ? Comment savez-vous que ces méthodes sont privées ?</em></p>
+<p>Vous devrez compléter petit à petit les méthodes de cette classe.</p>
+<h3 id="constructeur_1">Constructeur</h3>
+<p>Pour commencer, complétez le <strong>constructeur</strong> :</p>
+<pre><code>    def __init__(self,grid_size_x,grid_size_y,rules_code,state,pos_x,pos_y,orientation):
+
+        #Complétez ici
+</code></pre>
+<p>Elle prendra en entrée 2 entiers <code>grid_size_x</code> et <code>grid_size_y</code> contenant les dimensions de la grille de l'automate, une chaîne de caractères <code>rules_code</code> contenant les règles du "turmite", un entier <code>state</code> contenant l'état initial de la fourmi, 2 entiers <code>pos_x</code> et <code>pos_y</code> contenant la position initial de la fourmi sur la grille, et une chaîne de caractère <code>orientation</code> contenant l'orientation initiale de la fourmi ('up', 'down', 'right', 'left').</p>
+<p>Elle appellera le constructeur de la classe mère avec les entrées <code>grid_size_x</code> et <code>grid_size_y</code>.</p>
+<p>Ensuite, elle initialisera 4 attributs d'instance de la manière suivante :</p>
+<ul>
+<li>
+<p><code>rules</code> en utilisant une méthode <code>set_rules</code>, qui prendra en entrée <code>rules_code</code>, et que nous définirons plus tard.</p>
+</li>
+<li>
+<p><code>state</code> en utilisant une méthode <code>set_state</code>, qui prendra en entrée <code>state</code>, et que nous définirons plus tard.</p>
+</li>
+<li>
+<p><code>position</code> en utilisant une méthode <code>set_position</code>, qui prendra en entrée <code>pos_x</code> et <code>pos_y</code>, et que nous définirons plus tard.</p>
+</li>
+<li>
+<p><code>orientation</code> en utilisant une méthode <code>set_orientation</code>, qui prendra en entrée <code>orientation</code>, et que nous définirons plus tard.</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Aide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Pour appeler le constructeur de la classe mère dans la classe fille, on utilise <code>super().__init__()</code>, avec les entrées nécessaires pour créer une instance de la classe mère.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Quelle ligne de commande Python utiliseriez-vous pour créer une fourmi de Langton, avec une grille 100x100, les un état initial à 0, une position initiale à (0,0) et une orientation 'up'?</em></p>
+<h3 id="getters_1">Getters</h3>
+<p>Nous allons à présent compléter les "<strong>getters</strong>".</p>
+<p>Complétez la méthode <code>get_rules</code> suivante :</p>
+<pre><code>    def get_rules(self):
+
+        #Complétez ici
+</code></pre>
+<p>Elle devra retourner l'attribut d'instance <code>rules</code>.
+Cet attribut contiendra les règles de l'automate cellulaire.</p>
+<p>Complétez la méthode <code>get_state</code> suivante :</p>
+<pre><code>    def get_state(self):
+
+        #Complétez ici
+</code></pre>
+<p>Elle devra retourner l'attribut d'instance <code>state</code>.
+Cet attribut contiendra l'état de la fourmi.</p>
+<p>Complétez la méthode <code>get_position</code> suivante :</p>
+<pre><code>    def get_position(self):
+
+        #Complétez ici
+</code></pre>
+<p>Elle devra retourner l'attribut d'instance <code>position</code>.
+Cet attribut contiendra la position de la fourmi sur la grille de l'automate.</p>
+<p>Complétez la méthode <code>get_value</code> suivante :</p>
+<pre><code>    def get_value(self):
+
+        #Complétez ici
+</code></pre>
+<p>Elle devra retourner la valeur de la case de la grille sur laquelle se trouve la fourmi.</p>
+<p>Complétez la méthode <code>get_orientation</code> suivante :</p>
+<pre><code>    def get_orientation(self):
+
+        #Complétez ici
+</code></pre>
+<p>Elle devra retourner l'attribut d'instance <code>orientation</code>.
+Cet attribut contiendra l'orientation de la fourmi.</p>
+<h3 id="setters_1">Setters</h3>
+<p>Nous allons à présent compléter les "<strong>setters</strong>".</p>
+<p>Complétez la méthode <code>set_rules</code> suivante :</p>
+<pre><code>    def set_rules(self,rules_code):
+
+        #Complétez ici
+</code></pre>
+<p>Elle prendra en entrée une chaîne de caractères <code>rules_code</code> contenant la définition des règles de l'automate au format décrit plus tôt.
+Elle affectera à l'attribut d'instance <code>rules</code> une liste de liste, chaque liste contenant les 3 éléments entre slashs de la règle.</p>
+<p>Par exemple, pour la fourmi de Langton, on obtiendra : <code>[[1,'R',0],[0,'L',0],[1,'R',1],[0,'L',1]]</code>.</p>
+<p>Complétez la méthode <code>set_state</code> suivante :</p>
+<pre><code>    def set_state(self,state):
+
+        #Complétez ici
+</code></pre>
+<p>Elle prendra en entrée un entier 0 ou 1 <code>state</code>, et affectera cette valeur à l'attribut d'instance <code>state</code>.</p>
+<p>Ainsi, cette méthode permettra de mettre à jour l'état de la fourmi.</p>
+<p>Complétez la méthode <code>set_position</code> suivante :</p>
+<pre><code>    def set_position(self,pos_x,pos_y):
+
+        #Complétez ici
+</code></pre>
+<p>Elle prendra en entrée 2 entiers <code>pos_x</code> et <code>pos_y</code>, et affectera un tuple contenant <code>pos_x</code> et <code>pos_y</code> à l'attribut d'instance <code>position</code>.</p>
+<p>Ainsi, la méthode permettra de mettre à jour la position de la fourmi sur la grille de l'automate.</p>
+<p>Complétez la méthode <code>set_value</code> suivante :</p>
+<pre><code>    def set_value(self,value):
+
+        #Complétez ici
+</code></pre>
+<p>Elle prendra en entrée un entier 0 ou 1 <code>value</code>, et affectera cette valeur à la case de la grille sur laquelle se trouve la fourmi.</p>
+<p>Ainsi, la méthode permettra de mettre à jour la valeur de la case sur laquelle se trouve la fourmi.</p>
+<p>Complétez la méthode <code>set_orientation</code> suivante :</p>
+<pre><code>    def set_orientation(self,orientation):
+
+        #Complétez ici
+</code></pre>
+<p>Elle prendra en entrée une chaîne de caractères <code>orientation</code> contenant 'up', 'down', 'left' ou 'right', et affectera cette chaîne de caractères à l'attribut d'instance <code>orientation</code>.</p>
+<p>Ainsi, la méthode permettra de mettre à jour l'orientation de la fourmi.</p>
+<h3 id="methodes-privees">Méthodes privées</h3>
+<p>Comme nous l'avions remarqué précédemment, notre classe fille <code>turmite</code> aura 2 <strong>méthodes privées</strong> <code>__turn</code> et <code>__move</code>.</p>
+<p>Ces méthodes serviront respectivement à faire tourner et avancer la fourmi.</p>
+<p>Elles n'auront pas vocation à être appelées de l'extérieur de la classe, mais par la méthode d'itération du "turmite".
+D'où le fait qu'elles soient privées : nous ne voulons pas qu'un utilisateur fasse tourner ou bouger la fourmi par erreur en dehors des itérations de l'automate.</p>
+<p>Complétez la méthode <code>__turn</code> suivante :</p>
+<pre><code>    def __turn(self,direction):
+
+        #Complétez ici
+</code></pre>
+<p>Elle prendra en entrée une chaîne de caractères <code>direction</code>, contenant 'R', 'L', 'U' ou 'N', indiquant respectivement si la fourmi doit tourner à droite, à gauche, faire demi-tour ou garder son orientation actuelle.</p>
+<p>Elle modifiera l'attribut d'instance <code>orientation</code> par une nouvelle chaîne de caractère 'up', 'down', 'left' ou 'right', correspondant à la nouvelle orientation de la fourmi après changement d'orientation.</p>
+<p>Par exemple, une fourmi à l'orientation 'left' à laquelle on applique <code>__turn</code> avec l'entrée 'R' au la nouvelle orientation 'up'.</p>
+<p><em>Vérifions si vous avez bien compris le principe : si j'applique <code>__turn</code> à une foumi qui a l'orientation 'up', avec comme entrée 'U', quelle sera sa nouvelle orientation ?</em></p>
+<p>Complétez la méthode <code>__move</code> suivante :</p>
+<pre><code>    def __move(self):
+
+        #Complétez ici
+</code></pre>
+<p>Elle modifiera l'attribut d'instance <code>position</code>, pour déplacer la fourmi d'une case dans la direction de son orientation : en haut si 'up', en bas si 'down', à gauche si 'left', à droite si 'right'.</p>
+<h3 id="iteration-de-lautomate_1">Itération de l'automate</h3>
+<p>Nous allons à présent programmer la méthode qui permettra d'itérer un "turmite" un nombre donné de fois.
+L'idée sera d'appeler dans cette méthode d'autres méthodes programmées précédemment.</p>
+<p>Complétez donc la méthode <code>iterate_grid</code> suivante :</p>
+<pre><code>    def iterate_grid(self,nb_iterations):
+
+        #Complétez ici
+</code></pre>
+<p>Pour le nombre entier d'itérations <code>nb_iterations</code> donné en entrée, elle appliquera les règles du "turmite" (stockées dans l'attribut d'instance <code>rules</code>) à la fourmi et la case de la grille sur laquelle elle se trouve.
+Pour chaque itération, on incrémentera de 1 l'attribut d'instance <code>iteration</code>.</p>
+<p><em>Voyons si vous avez tout compris :</em>
+<em>Comment feriez-vous pour itérer 10 fois une instance de "turmite" <code>ant</code> ?</em></p>
+<h2 id="instanciation-et-simulation">Instanciation et simulation</h2>
+<p>Ça y est, votre automate cellulaire "turmite" est prêt à tourner !</p>
+<p>Faites tourner la "Fourmi de Langton" (règle '1R0/0L0/1R1/0L1') pour 11500 itérations, sur une grille 100x100 avec la fourmi initialisée au centre, la fourmi étant dans l'état initial 0, et orientée 'up'.
+Enregistrez une image PNG de la grille de l'automate toutes les 100 itérations.</p>
+<p>Si vous regardez les images PNG obtenues, vous devriez voir un comportement similaire à celui-ci :</p>
+<p><img alt="Simulation TP2" src="../img/TP2_example.gif" /></p>
+<p>Après des milliers d'itérations de déplacement chaotique, le fameux comportement émergent appelé "route" apparait clairement.</p>
+<p>Mais il existe bien d'autres "turmites" au comportement intéressant.
+Voici quelques exemples que vous pouvez essayer :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Nom de l'automate</th>
+<th style="text-align: center;">Règles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Fourmi de Langton</td>
+<td style="text-align: center;">1R0/0L0/1R1/0L1</td>
+</tr>
+<tr>
+<td style="text-align: center;">Fibonacci</td>
+<td style="text-align: center;">1L1/1L1/1R1/0N0</td>
+</tr>
+<tr>
+<td style="text-align: center;">Worm trails</td>
+<td style="text-align: center;">1R1/1L1/1R1/0R0</td>
+</tr>
+<tr>
+<td style="text-align: center;">Snowflake</td>
+<td style="text-align: center;">0R1/1R1/1L1/1L0</td>
+</tr>
+<tr>
+<td style="text-align: center;">Contoured island</td>
+<td style="text-align: center;">0R1/0N1/1R1/1L0</td>
+</tr>
+<tr>
+<td style="text-align: center;">Balloon bursting</td>
+<td style="text-align: center;">1L0/1R1/0R1/1L0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="vers-les-methodes-speciales">Vers les méthodes spéciales</h2>
+<p>Lors de ce TP, nous avons définit un automate cellulaire "turmite" ne faisant se déplacer qu'une seule fourmi sur la grille.</p>
+<p>Imaginons à présent que nous voulions programmer un automate cellulaire "turmite" contenant plusieurs foumis se déplaçant sur une même grille.
+Comment pourrions adapter le programme que nous venons de réaliser ?</p>
+<p>Pour commencer, nous pourrions définir une classe <code>ant</code>, contenant les attributs et méthodes propres à une fourmi.
+Ensuite, une autre classe <code>colony</code>, servirait de conteneur à fourmis (instances de la classe <code>ant</code>), comme une "colonie de fourmis".
+Enfin, la classe <code>turmite</code> serait initialisée avec une instance de <code>colony</code>.</p>
+<p>Ouvrez un nouveau fichier Python, et essayer de compléter les classes suivantes et vous basant sur votre programme précédemment :</p>
+<pre><code>class cellular_automaton_2D:
+
+    #Complétez ici
+
+class turmite(cellular_automaton_2D):
+
+    #Complétez ici
+
+class colony():
+
+    #Complétez ici
+
+class ant():
+
+    #Complétez ici
+</code></pre>
+<p>La classe <code>colony</code> devra permettre d'ajouter / retirer des fourmis au conteneur avec les opérateur <code>+</code> et <code>-</code>, d'obtenir le nombre de fourmis contenus avec la méthode <code>len</code>, et d'itérer sur les fourmis d'une colonie.</p>
+<p>Pour faire ceci, vous aurez besoin d'un concept nouveau : les <strong>méthodes spéciales</strong> Python.</p>
+<p><em>Comment définit-on une méthode spéciale en Python ?</em></p>
+<p>Vous pouvez tester votre nouvelle implémentation sur les mêmes exemples de "turmites" que précédemment.</p>
+<hr />
+<p>Bravo ! Vous avez compris les notions d'<strong>héritage</strong> et de <strong>polymorphisme</strong>.
+Lors des TP suivants, nous programmerons un nouveau type d'automates cellulaire, pour lequel nous aurons besoin de méthodes spéciales Python.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../TP1/" class="btn btn-neutral float-left" title="TP1"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../TP3/" class="btn btn-neutral float-right" title="TP3">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../TP1/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../TP3/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
