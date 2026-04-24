@@ -353,18 +353,18 @@ La solution : utiliser la notion d'**héritage**.
 
 Nous pourrions modifier notre programme de la manière suivante :
 
-* Définir une classe `2D_cellular_automaton` contenant les attributs et méthodes communs à tous les automates cellulaires 2D.
+* Définir une classe `cellular_automaton_2D` contenant les attributs et méthodes communs à tous les automates cellulaires 2D.
 
-* Définir une classe fille `life_like` héritant de la classe `2D_cellular_automaton`, contenant les attributs et méthodes spécifiques aux automates cellulaires "life-like".
+* Définir une classe fille `life_like` héritant de la classe `cellular_automaton_2D`, contenant les attributs et méthodes spécifiques aux automates cellulaires "life-like".
 
 Ouvrez un nouveau fichier Python, et essayer de compléter les classes suivantes et vous basant sur la classe `life_like` programmée précédemment :
 
 ~~~
-class 2D_cellular_automaton:
+class cellular_automaton_2D:
 
 	#Complétez ici
 	
-class life_like(2D_cellular_automaton):
+class life_like(cellular_automaton_2D):
 
 	#Complétez ici
 ~~~

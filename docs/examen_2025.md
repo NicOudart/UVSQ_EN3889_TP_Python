@@ -41,14 +41,14 @@ Nous ferons appel aux notions de programmation **orientée objet** vues en TP.
 
 ## Définition de la classe mère
 
-Nous allons commencer par définir la **classe mère** `2D_cellular_automaton`, qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D. 
+Nous allons commencer par définir la **classe mère** `cellular_automaton_2D`, qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D. 
 
 _Quel est l'intérêt de diviser notre programme en une classe mère et une classe fille ?_
 
 Voici la structure de la classe mère que nous allons programmer :
 
 ~~~
-class 2D_cellular_automaton():
+class cellular_automaton_2D():
     
     def __init__(self,grid_size_x,grid_size_y):
 	
@@ -149,7 +149,7 @@ Complétez la méthode `get_iteration` suivante :
 Elle devra retourner l'attribut d'instance `iteration`.
 Cet attribut contiendra le nombre d'itérations effectuées par l'automate depuis son initialisation.
 
-_Comment récupérer le nombre d'itérations d'une instance `automaton` de `2D_cellular_automaton` ?_
+_Comment récupérer le nombre d'itérations d'une instance `automaton` de `cellular_automaton_2D` ?_
 
 ### Setter
 
@@ -165,7 +165,7 @@ Complétez la méthode `set_grid` suivante :
 
 Elle prendra en entrée une matrice 2D Numpy `grid`, et affectera une copie Numpy de cette matrice à l'attribut d'instance `grid`.
 
-_Comment affecter une matrice Numpy 100x100 ne contenant que des 0 à l'attribut d'instance `grid` d'une instance `automaton` de `2D_cellular_automaton` ?_
+_Comment affecter une matrice Numpy 100x100 ne contenant que des 0 à l'attribut d'instance `grid` d'une instance `automaton` de `cellular_automaton_2D` ?_
 
 ### Itération de l'automate
 
@@ -209,12 +209,12 @@ _Expliquez ce que permettent de faire ces 2 méthodes._
 
 Nous allons maintenant définir la **classe fille** `brian_brain`, qui contiendra les attributs et méthodes spécifiques aux automates "Brian's brain". 
 
-_Comment Python sait-il qu'il s'agit d'une classe fille de `2D_cellular_automaton` ?_
+_Comment Python sait-il qu'il s'agit d'une classe fille de `cellular_automaton_2D` ?_
 
 Voici la structure de la classe fille que nous allons programmer :
 
 ~~~
-class brian_brain(2D_cellular_automaton):
+class brian_brain(cellular_automaton_2D):
     
     def __init__(self,grid_size_x,grid_size_y):
         

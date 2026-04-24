@@ -80,13 +80,13 @@ Lors de ce TP, nous allons programmer un automate cellulaire de type "turmite", 
 
 ## Définition de la classe mère
 
-Nous allons commencer par définir la **classe mère** `2D_cellular_automaton`, qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D.
+Nous allons commencer par définir la **classe mère** `cellular_automaton_2D`, qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D.
 Pour définir un automate cellulaire en particulier, il suffira de définir une classe fille héritant de cette classe mère, sans avoir besoin de tout réécrire.
 
 Voici la structure de la classe mère que nous allons programmer :
 
 ~~~
-class 2D_cellular_automaton:
+class cellular_automaton_2D:
     
     def __init__(self,grid_size_x,grid_size_y):
         
@@ -268,7 +268,7 @@ Maintenant que nous avons définit les attributs et méthodes communs à tous le
 Voici la structure de la classe fille que nous allons programmer :
 
 ~~~
-class turmite(2D_cellular_automaton):
+class turmite(cellular_automaton_2D):
     
     def __init__(self,grid_size_x,grid_size_y,rules_code,state,pos_x,pos_y,orientation):
         
@@ -327,7 +327,7 @@ class turmite(2D_cellular_automaton):
         #Complétez ici
 ~~~
 
-_Comment avons-nous indiqué à Python que la classe `turmite` hérite de la classe `2D_cellular_automaton` ?_
+_Comment avons-nous indiqué à Python que la classe `turmite` hérite de la classe `cellular_automaton_2D` ?_
 
 _Vérifions si vous avez compris le concept d'héritage : comment feriez-vous pour récupérer le nombre d'itérations d'une instance `ant` de `turmite` ?_ 
 
@@ -587,11 +587,11 @@ Enfin, la classe `turmite` serait initialisée avec une instance de `colony`.
 Ouvrez un nouveau fichier Python, et essayer de compléter les classes suivantes et vous basant sur votre programme précédemment :
 
 ~~~
-class 2D_cellular_automaton:
+class cellular_automaton_2D:
 
 	#Complétez ici
 	
-class turmite(2D_cellular_automaton):
+class turmite(cellular_automaton_2D):
 
 	#Complétez ici
 	

@@ -386,18 +386,18 @@ Complétez les différentes méthodes de ce conteneur`circuit`, en vous inspiran
 
 De la même manière que pour le TP précédent, nous allons programmer l'automate cellulaire "Wire-world" à proprement parler sous la forme de 2 classes :
 
-* Une **classe mère** `2D_cellular_automaton` qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D.
+* Une **classe mère** `cellular_automaton_2D` qui contiendra les attributs et méthodes communs à tous les automates cellulaires 2D.
 
 * Une **classe fille** `wire_world` qui contiendra les attributs et méthodes spécifiques aux automates "Wire-world".
 
 ### Un automate cellulaire 2D
 
-Commençons par la classe mère `2D_cellular_automaton`.
+Commençons par la classe mère `cellular_automaton_2D`.
 
 Elle est similaire à la classe du même nom programmée lors du TP précédent :
 
 ~~~
-class 2D_cellular_automaton():
+class cellular_automaton_2D():
     
     def __init__(self,grid_size_x,grid_size_y):
         
@@ -455,7 +455,7 @@ L'idée sera que l'utilisateur puisse initialiser la grille de l'automate avec u
 Voici donc la structure de la classe `wire_world` que nous allons programmer :
 
 ~~~
-class wire_world(2D_cellular_automaton):
+class wire_world(cellular_automaton_2D):
     
     def __init__(self,grid_size_x,grid_size_y,circuit,charges):
         
