@@ -242,11 +242,13 @@ Ajoutez les méthodes suivantes à votre classe mère :
 
 ~~~
     def display_grid(self):
+	
         plt.figure()
         plt.imshow(self.grid,cmap='binary')
         plt.show()
         
     def save_grid(self):
+	
         plt.figure()
         plt.imshow(self.grid,cmap='binary')
         plt.savefig('automaton_'+str(self.iteration)+'.png')
@@ -529,7 +531,7 @@ Elle modifiera l'attribut d'instance `position`, pour déplacer la fourmi d'une 
 
 ### Itération de l'automate
 
-Nous allons à présent programmer la méthode qui permettra de d'itérer un "turmite" un nombre donné de fois.
+Nous allons à présent programmer la méthode qui permettra d'itérer un "turmite" un nombre donné de fois.
 L'idée sera d'appeler dans cette méthode d'autres méthodes programmées précédemment.
 
 Complétez donc la méthode `iterate_grid` suivante :

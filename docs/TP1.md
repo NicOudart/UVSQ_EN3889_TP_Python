@@ -111,11 +111,13 @@ class life_like:
         #Complétez ici
         
     def display_grid(self):
+	
         plt.figure()
         plt.imshow(self.grid,cmap='binary')
         plt.show()
         
     def save_grid(self):
+	
         plt.figure()
         plt.imshow(self.grid,cmap='binary')
         plt.savefig('automaton_'+str(self.iteration)+'.png')

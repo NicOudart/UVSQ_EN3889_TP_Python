@@ -72,13 +72,16 @@ Voici la structure de la classe `electron` que nous allons programmer :
 class electron():
     
     def __init__(self,head_position,tail_position):
-        #Complétez ici
+        
+		#Complétez ici
         
     def get_head(self):
-        #Complétez ici
+        
+		#Complétez ici
     
     def get_tail(self):
-        #Complétez ici
+        
+		#Complétez ici
 ~~~
 
 #### Constructeur
@@ -107,33 +110,43 @@ Voici la structure de la classe `charges` que nous allons programmer :
 class charges():
     
     def __init__(self):
-        #Complétez ici
+        
+		#Complétez ici
         
     def __len__(self):
-        #Complétez ici
+        
+		#Complétez ici
         
     def __getitem__(self,i):
-        #Complétez ici
+        
+		#Complétez ici
         
     def __setitem__(self,i,elec):
-        #Complétez ici
+        
+		#Complétez ici
         
     def __iter__(self):
+	
         self.index = -1
+		
         return self
         
     def __next__(self):
+	
         self.index += 1
+		
         if self.index < len(self):
             return self[self.index]
         else:
             raise StopIteration
         
     def __add__(self,elec):
-        #Complétez ici 
+        
+		#Complétez ici 
         
     def __sub__(self,elec):
-        #Complétez ici  
+        
+		#Complétez ici  
 ~~~
 
 #### Constructeur 
@@ -187,13 +200,16 @@ Voici la structure de la classe mère `component` que nous allons programmer :
 class component():
         
     def __init__(self,wire_pixels):
-        #Complétez ici
+        
+		#Complétez ici
     
     def get_wire_pixels(self):
-        #Complétez ici
+        
+		#Complétez ici
     
     def position_shift(self,shift_x,shift_y):
-        #Complétez ici
+        
+		#Complétez ici
 ~~~
 
 #### Constructeur
@@ -242,7 +258,8 @@ Complétez alors la classe `wire` suivante :
 class wire(component):
         
     def __init__(self,pos_x,pos_y,length):
-        #Complétez ici
+        
+		#Complétez ici
 ~~~
 
 Son **constructeur** prendra en entrée 3 entiers `pos_x`, `pos_y` et `length`, contenant respectivement la position horizontale, la position verticale et la longueur du câble à initialiser.
@@ -268,7 +285,8 @@ Complétez alors la classe `clock` suivante :
 class clock(component):
         
     def __init__(self,pos_x,pos_y,length):
-        #Complétez ici
+        
+		#Complétez ici
 ~~~
 
 Son **constructeur** prendra en entrée 3 entiers `pos_x`, `pos_y` et `length`, contenant respectivement la position horizontale, la position verticale et la longueur de l'horloge à initialiser.
@@ -300,7 +318,8 @@ class xor(component):
     blueprint = #Complétez ici
     
     def __init__(self,pos_x,pos_y):
-        #Complétez ici
+        
+		#Complétez ici
 ~~~
 
 Un attribut de classe `blueprint` contiendra une liste de tuples, chaque tuple contenant les coordonnées d'une case conductrice du composant, en considérant la case la plus en haut à gauche du composant comme étant à (0,0).
@@ -322,33 +341,43 @@ Voici la structure de la classe `circuit` que nous allons programmer :
 class circuit():
     
     def __init__(self):
-        #Complétez ici
+        
+		#Complétez ici
         
     def __len__(self):
-        #Complétez ici
+        
+		#Complétez ici
         
     def __getitem__(self,i):
-        #Complétez ici
+        
+		#Complétez ici
         
     def __setitem__(self,i,compo):
-        #Complétez ici
+        
+		#Complétez ici
         
     def __iter__(self):
-        self.index = -1
+        
+		self.index = -1
+		
         return self
         
     def __next__(self):
-        self.index += 1
+        
+		self.index += 1
+		
         if self.index < len(self):
             return self[self.index]
         else:
             raise StopIteration
         
     def __add__(self,compo):
-        #Complétez ici
+        
+		#Complétez ici
         
     def __sub__(self,compo):
-        #Complétez ici  
+        
+		#Complétez ici  
 ~~~
 
 Complétez les différentes méthodes de ce conteneur`circuit`, en vous inspirant du conteneur `charges` que vous avez programmé précédemment.
@@ -371,32 +400,41 @@ Elle est similaire à la classe du même nom programmée lors du TP précédent 
 class 2D_cellular_automaton():
     
     def __init__(self,grid_size_x,grid_size_y):
-        self.iteration = 0
+        
+		self.iteration = 0
         self.set_grid(np.zeros((grid_size_x,grid_size_y)))
         
     def set_grid(self,grid):
-        self.grid = np.copy(grid)
+        
+		self.grid = np.copy(grid)
     
     def get_grid(self):
-        return np.copy(self.grid)
+        
+		return np.copy(self.grid)
     
     def get_grid_size(self):
-        size_x,size_y = np.shape(self.grid)
+        
+		size_x,size_y = np.shape(self.grid)
+		
         return size_x,size_y
         
     def get_iteration(self):
-        return self.iteration
+        
+		return self.iteration
         
     def iterate_grid(self):
-        raise NotImplementedError('Méthode non implémentée pour un automate en général.')
+        
+		raise NotImplementedError('Méthode non implémentée pour un automate en général.')
         
     def display_grid(self):
-        plt.figure()
+        
+		plt.figure()
         plt.imshow(self.grid,cmap='binary')
         plt.show()
         
     def save_grid(self):
-        plt.figure()
+        
+		plt.figure()
         plt.imshow(self.grid,cmap='binary')
         plt.savefig('automaton_'+str(self.iteration)+'.png')
         plt.close()
@@ -420,16 +458,20 @@ Voici donc la structure de la classe `wire_world` que nous allons programmer :
 class wire_world(2D_cellular_automaton):
     
     def __init__(self,grid_size_x,grid_size_y,circuit,charges):
-        #Complétez ici
+        
+		#Complétez ici
         
     def __print_circuit(self,circuit):
-        #Complétez ici
+        
+		#Complétez ici
                 
     def __charge_circuit(self,charges):
-        #Complétez ici
+        
+		#Complétez ici
             
     def get_neighbors(self):
-        #Complétez ici
+        
+		#Complétez ici
     
     def iterate_grid(self,nb_iterations):
         
