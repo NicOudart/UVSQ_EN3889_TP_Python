@@ -316,7 +316,7 @@ Vous enregistrerez une image PNG de la grille de l'automate à chaque itération
 
 Si vous regardez les images PNG obtenues, vous devriez voir un comportement similaire à celui-ci :
 
-![Simulation TP examen](img/TP_exam_example.gif)
+![Simulation TP examen](img/TP_exam_2025_example.gif)
 
 _Imaginons que vous vouliez à présent faire tourner un nouvel automate cellulaire "Brian's brain" avec des dimensions 100x100, pour 50 itérations. Comment feriez-vous ?_
 
